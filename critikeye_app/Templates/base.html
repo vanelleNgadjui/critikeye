@@ -1,0 +1,44 @@
+{% load matomo_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/mon_style.css' %}"> -->
+  <title>Critikeye</title>
+  <!-- Ajoutez vos liens vers les fichiers CSS et JS ici -->
+</head>
+<body>
+  <header>
+    <div class='logo_svg'>
+      <a href="/">
+        <!-- <img src="{% static 'images/logo.svg' %}" alt="" /> -->
+      </a>
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer>
+    <div class='socials'>
+      <!-- <a href="https://twitter.com/CritikEye" target="_blank">
+        <img src="{% static 'images/twitter.svg' %}" alt="" />
+      </a>
+      <a href="https://www.tiktok.com/@critikeye" target="_blank">
+        <img src="{% static 'images/tiktok.svg' %}" alt="" />
+      </a>
+      <a href="https://www.instagram.com/critikeye/" target="_blank">
+        <img src="{% static 'images/insta.svg' %}" alt="" />
+      </a>
+      <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank"> 
+        <img src="{% static 'images/linkedin.svg' %}" alt="" /> -->
+      <!-- </a> -->
+    </div>
+  </footer>
+  <!-- Ajoutez d'autres scripts et éléments communs à toutes les pages ici -->
+  {% tracking_code %}
+</body>
+</html>
