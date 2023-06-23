@@ -18,5 +18,3 @@ admin.site.register(Question)
 admin.site.register(Reponse)
 admin.site.register(Entreprise)
 admin.site.register(Technophile)
-
-

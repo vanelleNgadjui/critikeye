@@ -3,7 +3,8 @@ from django import forms
 from .models import NewsletterSubscriber
 from .models import Product
 from .models import Contact
-from .models import Entreprise, Technophile
+from .models import Entreprise, Technophile, Question, Reponse
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Newsletters
@@ -25,7 +26,22 @@ class ContactForm(forms.ModelForm):
         fields = ['nom', 'prenom', 'email', 'raison_sociale', 'numero', 'message']
 
 
+
+
+# creation de compte
+class EntrepriseForm(UserCreationForm):
+    class Meta:
+        model = Entreprise
+        fields = ['username', 'email', 'raison_sociale', 'numero', 'password1', 'password2']
+
+
+class TechnophileForm(UserCreationForm):
+    class Meta:
+        model = Technophile
+        fields = ['username', 'email', 'password1', 'password2']
+
 #  QCM
+
 class QuestionnaireForm(forms.Form):
     def __init__(self, questions, *args, **kwargs):
         super(QuestionnaireForm, self).__init__(*args, **kwargs)
@@ -39,19 +55,13 @@ class QuestionnaireForm(forms.Form):
                 widget=forms.RadioSelect
             )
 
-
-
-# creation de compte
-class EntrepriseForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-
+class ReponseForm(forms.ModelForm):
     class Meta:
-        model = Entreprise
-        fields = ['username', 'email', 'raison_sociale', 'numero', 'password']
+        model = Reponse
+        fields = ['reponse_text', 'est_correcte']
 
-class TechnophileForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+class FinalForm(forms.Form):
+    # Ajoutez les champs requis pour le formulaire final
+    pass
 
-    class Meta:
-        model = Technophile
-        fields = ['username', 'email', 'password']
+

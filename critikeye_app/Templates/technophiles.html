@@ -5,18 +5,45 @@
 
 {% block content %}
 <main>
-  <form method="post">
-    {% csrf_token %}
-    {{questionnaire_form}}
-    <button type="submit">Envoyer</button>
-  </form>
-
-  <form method="post">
-    {% csrf_token %}
-    {{ technophile_form }}
-    <button type="submit">Envoyer</button>
-  </form>
+  
+    <form  method="post" action="{% url 'create_accountTechnophiles' %}">
+      {% csrf_token %}
+      {{ questionnaire_form }}
+      <button type="submit">Soumettre</button>
+    </form>
+  
 </main>
+
+
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.style.display = 'block';
+      } else {
+        slide.style.display = 'none';
+      }
+    });
+  }
+
+  function goToNextSlide() {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+  }
+
+  function submit() {
+    document.getElementById('qcm-form').submit();
+    document.getElementById('compte-form').submit();
+  }
+
+  showSlide(currentSlide);
+</script>
 
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
 

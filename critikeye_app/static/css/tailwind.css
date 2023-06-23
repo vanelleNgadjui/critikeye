@@ -1,0 +1,653 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Ajoutez vos styles personnalisés ci-dessous */
+/* @import url('https://fonts.cdnfonts.com/css/akira-expanded'); */
+
+/* globals.css */
+:root {
+    --primary-color: #3c3838;
+    --secondary-color: #e8b17a;
+    --primary-color-second: ##343434;
+    --black: #121212;
+    --green: #00FFC2;
+}
+
+@font-face {
+    font-family: "Akira Expanded";
+    src: url("../fonts/AkiraBold.otf");
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("../fonts/Outfit-Regular.ttf");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 13px;
+
+    background-color: var(--black);
+    color: white;
+
+    background-image: url("../images/background1Mobile.svg"), url("../images/background2Mobile.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, right bottom;
+    background-size: 100%, 100%;
+
+    width: 100%;
+
+}
+
+.body {
+    background-image: url("../images/Rectanglebg.png");
+    height: fit-content;
+    margin: 4px;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    padding: 4rem 0rem 0rem 2rem;
+}
+
+.logo_svg img {
+    width: 5.5rem;
+}
+
+section {
+    position: relative;
+}
+
+.presation {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3rem;
+}
+
+.logo-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+
+}
+
+.dessin-logo {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.full-text {
+    position: absolute;
+    z-index: 1;
+
+    font-family: 'Akira Expanded';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    white-space: nowrap;
+    color: #00FFC2;
+    top: 4rem;
+}
+
+.noFull-text {
+    position: absolute;
+    z-index: 3;
+
+    font-family: 'Akira Expanded';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 0.3px #00FFC2;
+    top: 4rem;
+
+}
+
+.dessin-logo img {
+    position: absolute;
+    z-index: 2;
+    width: 16rem;
+}
+
+.text-presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.text-presentation p {
+    text-align: center;
+    font-size: 12px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.buttons p {
+    border: 2px solid var(--green);
+    padding: 10px 22px;
+    border-radius: 30px;
+    color: var(--green);
+    font-weight: bold;
+    font-size: 12px;
+
+    font-family: 'Akira Expanded';
+    font-style: normal;
+    font-weight: 700;
+}
+
+.buttons img {
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    margin-left: 10px;
+    padding: 3px;
+}
+
+.logo-circle {
+    position: absolute;
+    right: 2rem;
+}
+
+.logo-circle img {
+    width: 2.5rem;
+}
+
+.services {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 2rem;
+    margin: 2rem 0 4rem 0;
+
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.title img {
+    margin-bottom: 30px;
+}
+
+
+.text {
+    text-align: center;
+}
+
+.form-container label {
+    display: none;
+}
+
+span{
+    color: var(--green);
+}
+
+.section3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 2rem;
+    margin: 1rem 0 4rem 0;
+}
+
+.section3 .title img {
+    margin-bottom: 3.75rem;
+}
+
+.bgCriteye {
+    position: absolute;
+    bottom: 0;
+}
+
+.bgCriteye img {
+    width: 22rem;
+}
+
+.formSection {
+    box-sizing: border-box;
+
+    background: url("../images/rectanglebg.png"), linear-gradient(149.28deg, rgba(255, 255, 255, 0.24) 5.07%, rgba(178, 57, 235, 0.072) 99.27%);
+    box-shadow: -61px -45px 77px rgba(38, 13, 53, 0.16), -3px 18px 37px rgba(28, 8, 41, 0.34);
+    backdrop-filter: blur(17px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 24px;
+
+    padding: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.text-form {
+    margin-top: 1rem;
+}
+
+.text-form h3 {
+    margin-top: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1rem;
+}
+
+p {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Akira Expanded';
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+h2 {
+    font-size: 1.375rem;
+}
+
+h3 {
+    font-size: 0.875rem;
+}
+
+.bandeau {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.bandeau img {
+    animation: scroll 20s linear infinite;
+    transform: translateX(0%);
+    width: 150%;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+        /* Ajustez la valeur en fonction de la largeur de l'image */
+    }
+}
+
+
+.socials {
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Outfit';
+}
+
+.custom-input-container {
+    position: relative;
+}
+
+.custom-input {
+    width: -webkit-fill-available;
+    border: 1px solid var(--green);
+    outline: none;
+    background: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    width: 300px;
+    height: 40px;
+
+    color: white;
+}
+
+
+/* .custom-input:focus {
+    border-color: white;
+    outline: none;
+} */
+
+
+.custom-input::placeholder {
+    color: white;
+}
+
+textarea {
+    font-family: 'Outfit';
+}
+
+.envoyer {
+    color: #121212;
+    background: #00FFC2;
+    padding: 10px 22px;
+    font-family: 'Akira Expanded';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15.6667px;
+    line-height: 18px;
+    margin: 2rem 0 1rem 0;
+    border-radius: 36.1538px;    
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width:640px) {
+    body {
+        background-image: url('../images/background1.svg'), url('../images/background2.svg');
+        background-repeat: no-repeat, no-repeat;
+        background-position: left top, right bottom;
+        background-size: 100%, 100%;
+    }
+
+    header {
+        padding: 4rem 0rem 10rem 4rem;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    h1,
+    h2 {
+        font-size: 2.3rem;
+
+    }
+
+    h1 {
+        width: 24rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .logo_svg img {
+        width: 10rem;
+    }
+
+    .presation {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4rem;
+    }
+
+    .text-presentation {
+        order: 1;
+        width: 50%;
+        gap: 0rem;
+        align-items: flex-start;
+        justify-content: left;
+    }
+
+    .text-presentation p {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .logo-image {
+        order: 2;
+        width: 50%;
+        align-self: flex-start;
+        height: fit-content;
+    }
+
+
+    .dessin-logo {
+        position: relative;
+        width: 100%;
+    }
+
+    .full-text,
+    .noFull-text {
+        font-size: 5rem;
+        top: 6rem;
+    }
+
+    .noFull-text {
+        -webkit-text-stroke: 0.8px #00FFC2;
+    }
+
+    .dessin-logo img {
+        width: 34rem;
+        top: -4rem;
+    }
+
+    .logo-circle {
+        left: 50%;
+        bottom: 4rem;
+    }
+
+    .logo-circle img {
+        width: 4rem;
+    }
+
+    .services {
+        padding: 0 4rem;
+    }
+
+    .services .text {
+        width: 58.563rem;
+    }
+
+    .section3 {
+        padding: 0 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .bgCriteye {
+        top: 50%;
+    }
+
+    .bgCriteye img {
+        width: 80rem;
+    }
+
+    .formSection {
+        width: 40rem;
+        padding: 4rem;
+        gap: 4rem;
+        backdrop-filter: blur(14px);
+    }
+
+    .text-form {
+        margin-top: 2rem;
+    }
+
+    .text-form h3 {
+        margin-bottom: 4rem;
+    }
+
+    
+
+    .envoyer {
+        margin-top: 4rem;
+    }
+
+    .bandeau img {
+        width: 100%;
+    }
+
+    .socials {
+        gap: 4rem;
+    }
+
+    .custom-input {
+        font-size: 16px;
+        width: 500px;
+        height: 60px;
+        padding: 15px;
+    }
+
+    .buttons img {
+        padding: 6px;
+    }
+
+    .text-presentation h2 {
+        text-align: left;
+    }
+
+    .buttons {
+        margin-bottom: 10rem;
+    }
+
+    .envoyer{
+        margin-bottom: 0;
+    }
+
+
+
+
+}
+
+/* TABLETTTTTESSSSSS */
+@media screen and (min-width:800px) and (max-width:1124px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .logo-image {
+        height: 8rem;
+    }
+
+    .full-text,
+    .noFull-text {
+        font-size: 3.5rem;
+        top: 5rem;
+    }
+
+
+    .dessin-logo img {
+        width: 24rem;
+        top: -2rem;
+    }
+
+    .text-presentation p {
+        font-size: 16px;
+    }
+
+    .bgCriteye img {
+        width: 60rem;
+    }
+}
+
+
+
+
+/* PETITS TELEPHONES */
+@media screen and (max-width:330px) {
+    .logo-image {
+        height: 8rem;
+    }
+
+    .full-text,
+    .noFull-text {
+        font-size: 2rem;
+        top: 4rem;
+    }
+
+    .dessin-logo img {
+        width: 14.5rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 0.875rem;
+    }
+
+    .buttons p {
+        font-size: 12px;
+    }
+
+    p {
+        font-size: 10px
+    }
+
+    .bgCriteye img {
+        width: 18rem;
+    }
+}

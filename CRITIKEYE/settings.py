@@ -165,7 +165,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Définir la vue de connexion par défaut
-LOGIN_REDIRECT_URL = 'accueil'
+LOGIN_REDIRECT_URL = 'index'
 
 # Définir les URL pour les vues de connexion et de déconnexion
 LOGIN_URL = 'login'

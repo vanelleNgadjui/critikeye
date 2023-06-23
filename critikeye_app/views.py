@@ -9,10 +9,14 @@ import openai
 import requests
 import base64
 
-from .forms import QuestionnaireForm, TechnophileForm
 from .forms import NewsletterSubscriberForm, ProductForm, ContactForm, QuestionnaireForm, TechnophileForm, EntrepriseForm
+from .forms import ReponseForm, FinalForm
 
-from .models import Product, Question, Reponse
+from .models import Product, Question, Reponse, Technophile, Entreprise
+
+from django.forms.models import modelformset_factory
+from django.contrib.auth.models import User
+
 
 from googletrans import Translator
 
@@ -26,6 +30,8 @@ from email import encoders
 
 # Le décorateur @csrf_protect est nécessaire pour protéger votre formulaire contre les attaques CSRF (Cross-Site Request Forgery).
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -33,30 +39,21 @@ from django.views.decorators.csrf import csrf_protect
 
 
 # Pages
-def index(request):
-    return render(request, 'index.html')
 def about(request):
     return render(request, 'about.html')
-def contact(request):
-    return render(request, 'contact.html')
-def technophiles(request):
-    return render(request, 'technophiles.html')
 def entreprises(request):
     return render(request, 'entreprises.html')
 def fiche_produit(request):
     return render(request, 'fiche_produit.html')
-def compte(request):
-    return render(request, 'compte.html')
-
 
 # Newsletters
-def newsletter_subscription(request):
+def index (request):
     if request.method == 'POST':
         form = NewsletterSubscriberForm(request.POST)
         if form.is_valid():
             form.save()
             # Faites ici les actions nécessaires après l'inscription à la newsletter
-            return render(request, 'newsletter_success.html')
+            return render(request, 'index.html')
     else:
         form = NewsletterSubscriberForm()
     
@@ -97,9 +94,9 @@ def create_product(request):
 
 def appeler_api_dalle(prompt):
     # Convertir les données du formulaire en format adapté pour l'API DALL·E
-    product_name = prompt["product_name"]
+    description_produit = prompt
     translator = Translator(service_urls=["translate.google.com"])
-    translated_product_name = translator.translate(product_name, src="fr", dest="en").text
+    translated_description_produit = translator.translate(description_produit, src="fr", dest="en").text
 
     # openai.api_key = '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'
     # response = openai.Image.create(
@@ -108,7 +105,7 @@ def appeler_api_dalle(prompt):
     #     size="256x256"
     # )
 
-    prompt = translated_product_name
+    prompt = translated_description_produit
 
     url = "https://stablediffusionapi.com/api/v3/text2img"
 
@@ -254,66 +251,7 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
-# code du qcm
-def questionnaire(request):
-    questions = Question.objects.all()
-    form = QuestionnaireForm(questions)
-    context = {'questionnaire_form': form}
-    return render(request, 'technophiles.html', context)
 
-def traiter_reponses(request):
-    if request.method == 'POST':
-        form = QuestionnaireForm(Question.objects.all(), request.POST)
-        if form.is_valid():
-            for question in Question.objects.all():
-                selected_reponse_id = form.cleaned_data[f'question_{question.id}']
-                selected_reponse = question.reponse_set.get(id=selected_reponse_id)
-                selected_reponse.est_selectionnee = True
-                selected_reponse.save()
-            
-            reponses_correctes = Reponse.objects.filter(
-                question__in=Question.objects.all(),
-                est_selectionnee=True,
-                est_correcte=True
-            )
-            score = len(reponses_correctes)
-            
-            context = {'reponses_correctes': reponses_correctes, 'score': score}
-            # Page en cas de sucess ceci pourra etre la page compte
-            return render(request, 'compte.html', context)
-    else:
-        form = QuestionnaireForm(Question.objects.all())
-    
-    context = {'questionnaire_form': form}
-    return render(request, 'technophiles.html', context)
-
-
-#  code utilisateur inxcription connexion
-def create_entreprise(request):
-    if request.method == 'POST':
-        form = EntrepriseForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # Faites ici les actions nécessaires après la création de l'entreprise
-            return redirect('login')
-    else:
-        form = EntrepriseForm()
-    
-    context = {'entreprise_form': form}
-    return render(request, 'entreprises.html', context)
-
-def create_technophile(request):
-    if request.method == 'POST':
-        form = TechnophileForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # Faites ici les actions nécessaires après la création du technophile
-            return redirect('login')
-    else:
-        form = TechnophileForm()
-    
-    context = {'technophile_form': form}
-    return render(request, 'technophiles.html', context)
 
 
 def user_login(request):
@@ -328,7 +266,8 @@ def user_login(request):
             return redirect('compte')
         else:
             # Gérer l'authentification invalide
-            return HttpResponse("Authentification invalide")
+            # return HttpResponse("Authentification invalide")
+            return render(request, 'login.html')
     else:
         # Gérer les requêtes GET
         return render(request, 'login.html')
@@ -343,7 +282,161 @@ def my_view(request):
     if request.user.is_authenticated:
         # L'utilisateur est connecté, effectuez les actions nécessaires
         # ...
-        return render(request, 'logged_in.html')
+        return render(request, 'compte')
     else:
         # L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
         return redirect('login')
+
+@login_required    
+def compte(request):
+    # Récupérer les informations du compte
+    user = request.user
+    # Passer les informations du compte au contexte
+    context = {'user': user}
+    return render(request, 'compte.html', context)
+
+
+def technophiles(request):
+    if request.method == 'POST':
+        if 'questionnaire_form' in request.POST:
+            questions = Question.objects.all()
+            questionnaire_form = QuestionnaireForm(request.POST, questions=questions)
+            if questionnaire_form.is_valid():
+                for question in questions:
+                    selected_reponse_id = questionnaire_form.cleaned_data.get(f'question_{question.id}')
+                    selected_reponse = question.reponse_set.get(id=selected_reponse_id)
+                    selected_reponse.est_selectionnee = True
+                    selected_reponse.save()
+
+                reponses_correctes = Reponse.objects.filter(
+                    question__in=questions,
+                    est_selectionnee=True,
+                    est_correcte=True
+                )
+                score = len(reponses_correctes)
+
+                technophile_form = TechnophileForm(request.POST)
+                if technophile_form.is_valid():
+                    technophile = technophile_form.save(commit=False)
+                    username = technophile_form.cleaned_data.get('username')
+                    password = technophile_form.cleaned_data.get('password1')
+                    technophile.set_password(password)
+                    technophile.save()
+                    user = authenticate(request, username=username, password=password)
+                    login(request, user)
+                    return redirect('compte')
+
+                context = {
+                    'questionnaire_form': questionnaire_form,
+                    'technophile_form': technophile_form,
+                    'questions': questions,
+                    'reponses_correctes': reponses_correctes,
+                    'score': score
+                }
+                return render(request, 'technophiles.html', context)
+        elif 'technophile_form' in request.POST:
+            technophile_form = TechnophileForm(request.POST)
+            if technophile_form.is_valid():
+                user = technophile_form.save()  # Enregistrement de l'utilisateur Technophile
+                login(request, user)  # Connexion de l'utilisateur
+                return redirect('compte')
+            else:
+                # Gérer le cas où le formulaire n'est pas valide
+                questions = Question.objects.all()
+                questionnaire_form = QuestionnaireForm(questions=questions)
+                context = {
+                    'questionnaire_form': questionnaire_form,
+                    'technophile_form': technophile_form,
+                    'questions': questions,
+                    'errors': technophile_form.errors
+                }
+                return render(request, 'technophiles.html', context)
+
+    else:
+        # Affichage initial de la page avec les formulaires
+        questions = Question.objects.all()
+        questionnaire_form = QuestionnaireForm(questions=questions)
+        technophile_form = TechnophileForm()
+        context = {
+            'questionnaire_form': questionnaire_form,
+            'technophile_form': technophile_form,
+            'questions': questions,
+            'errors': technophile_form.errors
+        }
+        return render(request, 'technophiles.html', context)
+
+    return render(request, 'technophiles.html')
+
+
+
+
+def creer_compte_technophile(request):
+    if request.method == 'POST':
+        technophile_form = TechnophileForm(request.POST)
+        if technophile_form.is_valid():
+            username = technophile_form.cleaned_data.get('username')
+            password = technophile_form.cleaned_data.get('password1')
+            email = technophile_form.cleaned_data.get('email')
+
+            # Créer un nouvel utilisateur Django
+            user = User.objects.create_user(username=username, password=password, email=email)
+
+            # Créer une instance de Technophile et associer l'utilisateur
+            technophile = Technophile(user=user, email=email, username=username)
+            technophile.set_password(password)
+            technophile.save()
+
+            # Authentifier et connecter l'utilisateur
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+
+            return redirect('compte')
+        else:
+            context = {
+                'technophile_form': technophile_form,
+                'errors': technophile_form.errors
+            }
+            return render(request, 'create_accountTechnophiles.html', context)
+    else:
+        technophile_form = TechnophileForm()
+        context = {
+            'technophile_form': technophile_form,
+        }
+        return render(request, 'create_accountTechnophiles.html', context)
+
+
+def creer_compte_entrerpise(request):
+    if request.method == 'POST':
+        entreprise_form = EntrepriseForm(request.POST)
+        if entreprise_form.is_valid():
+            username = entreprise_form.cleaned_data.get('username')
+            password = entreprise_form.cleaned_data.get('password1')
+            email = entreprise_form.cleaned_data.get('email')
+            numero = entreprise_form.cleaned_data.get('numero')
+            raison_sociale = entreprise_form.cleaned_data.get('raison_sociale')
+
+            # Créer un nouvel utilisateur Django
+            user = User.objects.create_user(username=username, password=password, email=email)
+
+            # Créer une instance de Entreprise et associer l'utilisateur
+            entreprise = Entreprise(user=user, email=email, username=username, numero=numero,  raison_sociale=raison_sociale)
+            entreprise.set_password(password)
+            entreprise.save()
+
+            # Authentifier et connecter l'utilisateur
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+
+            return redirect('compte')
+        else:
+            context = {
+                'entreprise_form': entreprise_form,
+                'errors': entreprise_form.errors
+            }
+            return render(request, 'create_accountEntreprises.html', context)
+    else:
+        entreprise_form = EntrepriseForm()
+        context = {
+            'entreprise_form': entreprise_form,
+        }
+        return render(request, 'create_accountEntreprises.html', context)

@@ -28,21 +28,18 @@ urlpatterns = [
 
     path('technophiles/', views.technophiles, name='technophiles'),
     path('entreprises/', views.entreprises, name='entreprises'),
-    
-    path('questionnaire/', views.questionnaire, name='questionnaire'),
-    path('traiter-reponses/', views.traiter_reponses, name='traiter-reponses'),
+
+    path('fiche_produit/', views.create_product, name='fiche_produit'),
+
     path('logout/', views.user_logout, name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-    path('fiche_produit/', views.fiche_produit, name='fiche_produit'),
-
-    path('compte/', views.user_logout, name='compte'),
-    
-    # ...
-    # path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    # path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    # ...
     path('login/', views.user_login, name='user_login'),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+
     path('compte/', views.compte, name='compte'),
 
-]
+    path('create_accountTechnophiles/', views.creer_compte_technophile, name='create_accountTechnophiles'),
+    path('create_accountEntreprises/', views.creer_compte_entrerpise, name='create_accountEntreprises'),
 
+]
