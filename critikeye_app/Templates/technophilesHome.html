@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<!-- Ajoutez cette ligne pour charger les balises statiques -->
+
+{% block content %}
+<main class="flex flex-col justify-center items-center gap-12 text-center mb-12 mr-12 ml-12" >
+    <div class="flex flex-col justify-center items-center gap-12">
+        <img src="{% static 'images/imgTechnophiles.svg' %}" alt="">
+        <h2>êtes-vous technophile ?</h2>
+    </div>
+    <div class="flex flex-col justify-center items-center gap-12">
+        <img src="{% static 'images/horloge.svg' %}" alt="">
+        <h3>le test dure moins de 10 minutes</h3>
+    </div >
+    <div class="flex flex-col justify-center items-center gap-12">
+        <img src="{% static 'images/honetete.svg' %}" alt="">
+        <h3>répondez avec honnêteté</h3>
+    </div>
+    <a href="{% url 'technophiles' %}"
+    class=" rounded-lg py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-green_secondary text-white mt-12 p-12">
+    Suivant
+  </a>
+</main>
+
+<!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
+
+{% endblock %}

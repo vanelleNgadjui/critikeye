@@ -41,6 +41,8 @@ from django.contrib.auth.decorators import login_required
 # Pages
 def about(request):
     return render(request, 'about.html')
+def technophilesHome(request):
+    return render(request, 'technophilesHome.html')
 def entreprises(request):
     return render(request, 'entreprises.html')
 def fiche_produit(request):
@@ -257,9 +259,9 @@ def contact(request):
 def user_login(request):
     if request.method == 'POST':
         # Traitement des requêtes POST
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
             # Faites ici les actions nécessaires après la connexion

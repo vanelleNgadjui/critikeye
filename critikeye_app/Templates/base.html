@@ -65,43 +65,42 @@
 
   {% endblock %}
 
-  <footer class="bg-zinc-800 p-8 flex flex-col justify-center items-center">
-    <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4">
-      <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
-      <p class="text-center">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des
-        inventions futures?</p>
-      <ul class="flex flex-row justify-between items-center gap-4 ">
-        <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
-        <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
-        <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>
-      </ul>
-    </div>
-    <div class="flex flex-col justify-center items-center gap-2 mt-4">
-      <p class="text-center">Checkez nos réseaux sociaux !</p>
-      <div class='socials'>
-        <a href="https://twitter.com/CritikEye" target="_blank">
-          <img src="{% static 'images/twitter.svg' %}" alt="" />
-        </a>
-        <a href="https://www.tiktok.com/@critikeye" target="_blank">
-          <img src="{% static 'images/tiktok.svg' %}" alt="" />
-        </a>
-        <a href="https://www.instagram.com/critikeye/" target="_blank">
-          <img src="{% static 'images/insta.svg' %}" alt="" />
-        </a>
-        <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank">
-          <img src="{% static 'images/linkedin.svg' %}" alt="" />
-        </a>
+  {% block footer %}
+  <footer>
+    <div class="bg-zinc-800 p-8 flex flex-col justify-center items-center">
+      <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4">
+        <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
+        <p class="text-center">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des
+          inventions futures?</p>
+        <ul class="flex flex-row justify-between items-center gap-4 ">
+          <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
+          <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>
+        </ul>
       </div>
-      <p class="text-center">© Copyright 2023 | Mentions légales | Tous droits réservés | Hebergé par Viaduc ®</p>
+      <div class="flex flex-col justify-center items-center gap-2 mt-4">
+        <p class="text-center">Checkez nos réseaux sociaux !</p>
+        <div class='socials mt-4'>
+          <a href="https://twitter.com/CritikEye" target="_blank">
+            <img src="{% static 'images/twitter.svg' %}" alt="" />
+          </a>
+          <a href="https://www.tiktok.com/@critikeye" target="_blank">
+            <img src="{% static 'images/tiktok.svg' %}" alt="" />
+          </a>
+          <a href="https://www.instagram.com/critikeye/" target="_blank">
+            <img src="{% static 'images/insta.svg' %}" alt="" />
+          </a>
+          <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank">
+            <img src="{% static 'images/linkedin.svg' %}" alt="" />
+          </a>
+        </div>
+        <p class="text-center">© Copyright 2023 | Mentions légales | Tous droits réservés | Hebergé par Viaduc ®</p>
+      </div>
     </div>
-
   </footer>
+  {% endblock %}
   <!-- Ajoutez d'autres scripts et éléments communs à toutes les pages ici -->
   {% tracking_code %}
-
-
-
-
 
   <script src="{% static 'scripts/script.js' %}"></script>
 </body>

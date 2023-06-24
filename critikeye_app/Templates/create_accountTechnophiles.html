@@ -4,14 +4,57 @@
 <!-- Ajoutez cette ligne pour charger les balises statiques -->
 
 {% block content %}
-<main>
-  <form method="post">
-    {% csrf_token %}
-    {{ technophile_form }}
-    <button type="submit">Envoyer</button>
-  </form>
+<main class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center">
+  <p>
+    Félicitations vous êtes éligible à rejoindre notre communauté de technophiles !
+  </p>
+  <div class="bg-zinc-800 p-8 rounded-xl mt-8">
+    <p>Inscrivez-vous afin de découvrir votre espace personnel, ainsi que les produits à tester. </p>
+    <form class="form mt-6 w-full" method="post">
+      {% csrf_token %}
+      <div class="mb-4 w-full rounded-xl border border-green_secondary">
+        {{ technophile_form.username }}
+      </div>
+      <div class="mb-4 w-full rounded-xl border border-green_secondary">
+        {{ technophile_form.email }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ technophile_form.password1 }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ technophile_form.password2 }}
+      </div>
+      <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+        <input class="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] 
+          w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid
+           border-green_secondary outline-none before:pointer-events-none 
+           before:absolute before:h-[0.875rem] before:w-[0.875rem]
+            before:scale-0 before:rounded-full before:bg-transparent 
+            before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] 
+            before:content-[''] checked:border-primary checked:bg-primary
+             checked:before:opacity-[0.16] checked:after:absolute
+              checked:after:-mt-px checked:after:ml-[0.25rem] 
+              checked:after:block checked:after:h-[0.8125rem] 
+              checked:after:w-[0.375rem] checked:after:rotate-45
+               checked:after:border-[0.125rem] checked:after:border-l-0
+                checked:after:border-t-0 checked:after:border-solid
+                 checked:after:border-white checked:after:bg-transparent
+                  checked:after:content-[''] hover:cursor-pointer" type="checkbox" value="newsletter"
+          id="newsletter" />
+        <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-center text-green_secondary" for="newsletter">
+          Inscrivez-vous à notre newsletter pour ne manquer aucune info !
+        </label>
+      </div><button type="submit"
+        class="rounded-full py-2 px-3 text-xs cursor-pointer tracking-wider border border-green_secondary   uppercase text-green_secondary mt-12 font-bold">ACCéder
+        à mon compte</button>
+    </form>
+  </div>
+
 </main>
 
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
 
+{% endblock %}
+{% block footer %}
+<footer class="hidden"></footer>
 {% endblock %}

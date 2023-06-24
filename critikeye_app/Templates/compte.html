@@ -4,11 +4,17 @@
 <!-- Ajoutez cette ligne pour charger les balises statiques -->
 
 {% block content %}
-<main>
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">Déconnexion</button>
-      </form>
+
+<main class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center">
+  <div class="mb-8 flex items-start">
+    <h1 class="">Mon compte</h1>
+    <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
+  </div>
+
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Déconnexion</button>
+  </form>
 </main>
 
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->

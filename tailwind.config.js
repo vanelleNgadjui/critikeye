@@ -6,6 +6,10 @@ module.exports = {
     extend: {
       colors: {
         secondary:"#3A2161",
+        green_secondary: "#00FFC2",
+      },
+      backgroundImage: {
+        'star': "url('../images/star.svg')",
       }
     },
   },
