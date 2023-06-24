@@ -4,12 +4,107 @@
 <!-- Ajoutez cette ligne pour charger les balises statiques -->
 
 {% block content %}
-<main>
-  <form method="post">
-    {% csrf_token %}
-    {{ newsletter_form }}
-    <button type="submit">S'abonner</button>
-  </form>
+<main class="m-8">
+  <section>
+    <div class="imageLogo">
+
+    </div>
+    <div class="text-presentation">
+
+    </div>
+    <div class="bande"></div>
+  </section>
+
+  <section>
+    <div class="watchers">
+      <h3></h3>
+      <div>
+        <p></p>
+        <img src="" alt="">
+      </div>
+      <div>
+        <p></p>
+       <button></button>
+      </div>
+    </div>
+
+    <div class="entrerpise">
+      <h3></h3>
+      <div>
+        <p></p>
+        <img src="" alt="">
+      </div>
+      <div>
+        <p></p>
+       <button></button>
+      </div>
+    </div>
+    <div class="fonction">
+      <div class="text">
+        <div>
+          <h3></h3>
+        </div>
+        <p></p>
+      </div>
+      <div>
+        <p></p>
+        <img src="" alt="">
+      </div>
+    </div>
+
+    <div class="bande"></div>
+  </section>
+
+  <section>
+    <div class="chiffre">
+      <div>
+        <h3></h3>
+      </div>
+      <div>
+        <p class="pourcentage"></p>
+        <p></p>
+      </div>
+      <div>
+        <p class="pourcentage"></p>
+        <p></p>
+      </div>
+    </div>
+    <div class="services">
+      <h3></h3>
+      <p></p>
+    </div>
+
+    <div class="bande"></div>
+  </section>
+  <section>
+    <div>
+      <div>
+        <h2></h2>
+      </div>
+
+      <button></button>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h2></h2>
+    </div>
+
+    <div>
+      <h4></h4>
+      <p></p>
+      <form method="post">
+        {% csrf_token %}
+        {{ newsletter_form }}
+        <button type="submit">S'abonner</button>
+      </form>
+    </div>
+
+
+  </section>
+
+
 </main>
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
 

@@ -3,48 +3,107 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/final.css' %}">
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/mon_style.css' %}"> -->
   <title>Critikeye</title>
   <!-- Ajoutez vos liens vers les fichiers CSS et JS ici -->
 </head>
-<body>
+
+<body class="text-white">
   <header>
-    <div class='logo_svg'>
-      <a href="/">
-        <!-- <img src="{% static 'images/logo.svg' %}" alt="" /> -->
-      </a>
+    <div class="grid grid-rows-2 md:grid-cols-2">
+
+      <div class="flew ">
+        <div class="col-span-1 md:hidden cursor-pointer" id="burger">
+          <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img src="{% static 'images/logo.svg' %}" alt="Logo" class="h-12">
+        </div>
+      </div>
+
+      <nav class="hidden text-center md:block" id="menu">
+
+        <button class="md:hidden justify-end" id="close">
+          <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <ul class="flex flex-col md:justify-center md:items-center md:space-x-4 md:flex-row gap-6">
+          <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
+          <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"
+          class="md:hidden rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary mt-12">
+          Déconnexion
+        </a>
+        {% else %}
+        <a href="{% url 'login' %}"
+          class="md:hidden rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary mt-12">
+          Connexion
+        </a>
+        {% endif %}
+
+
+      </nav>
+
     </div>
+
   </header>
-  <div class="bg-gray-200 p-4">
-    <h1 class="text-2xl font-bold">Bienvenue sur mon site avec Tailwind CSS</h1>
-    <p class="text-gray-800 mt-2">Ceci est un exemple de texte stylisé avec Tailwind CSS.</p>
-    <button class="bg-green-500 hover:bg-green-700 text-green font-bold py-2 px-4 mt-4 rounded">Cliquez ici</button>
-</div>
+
+
   {% block content %}
 
   {% endblock %}
 
-  <footer>
-    <div class='socials'>
-      <!-- <a href="https://twitter.com/CritikEye" target="_blank">
-        <img src="{% static 'images/twitter.svg' %}" alt="" />
-      </a>
-      <a href="https://www.tiktok.com/@critikeye" target="_blank">
-        <img src="{% static 'images/tiktok.svg' %}" alt="" />
-      </a>
-      <a href="https://www.instagram.com/critikeye/" target="_blank">
-        <img src="{% static 'images/insta.svg' %}" alt="" />
-      </a>
-      <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank"> 
-        <img src="{% static 'images/linkedin.svg' %}" alt="" /> -->
-      <!-- </a> -->
+  <footer class="bg-zinc-800 p-8 flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4">
+      <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
+      <p class="text-center">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des
+        inventions futures?</p>
+      <ul class="flex flex-row justify-between items-center gap-4 ">
+        <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
+        <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
+        <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>
+      </ul>
     </div>
+    <div class="flex flex-col justify-center items-center gap-2 mt-4">
+      <p class="text-center">Checkez nos réseaux sociaux !</p>
+      <div class='socials'>
+        <a href="https://twitter.com/CritikEye" target="_blank">
+          <img src="{% static 'images/twitter.svg' %}" alt="" />
+        </a>
+        <a href="https://www.tiktok.com/@critikeye" target="_blank">
+          <img src="{% static 'images/tiktok.svg' %}" alt="" />
+        </a>
+        <a href="https://www.instagram.com/critikeye/" target="_blank">
+          <img src="{% static 'images/insta.svg' %}" alt="" />
+        </a>
+        <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank">
+          <img src="{% static 'images/linkedin.svg' %}" alt="" />
+        </a>
+      </div>
+      <p class="text-center">© Copyright 2023 | Mentions légales | Tous droits réservés | Hebergé par Viaduc ®</p>
+    </div>
+
   </footer>
   <!-- Ajoutez d'autres scripts et éléments communs à toutes les pages ici -->
   {% tracking_code %}
+
+
+
+
+
+  <script src="{% static 'scripts/script.js' %}"></script>
 </body>
+
 </html>

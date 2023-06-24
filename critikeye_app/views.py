@@ -440,3 +440,7 @@ def creer_compte_entrerpise(request):
             'entreprise_form': entreprise_form,
         }
         return render(request, 'create_accountEntreprises.html', context)
+
+
+def page_not_found(request, exception):
+    return render(request, '404.html', status=404)

@@ -1,12 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ['./critikeye_app/templates/**/*.html',
+    './critikeye_app/static/js/**/*.js',],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        secondary:"#3A2161",
+      }
+    },
   },
   plugins: [],
-  purge: ['./critikeye_app/static/css/**/*.css', './critikeye_app/templates/**/*.html'],
-  // Autres options de configuration
-
 }
 

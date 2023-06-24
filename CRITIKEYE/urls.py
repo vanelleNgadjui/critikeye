@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from critikeye_app import views
 from django.contrib.auth import views as auth_views
+from django.conf.urls import handler404
+from critikeye_app.views import page_not_found
+
+handler404 = page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,5 +45,5 @@ urlpatterns = [
 
     path('create_accountTechnophiles/', views.creer_compte_technophile, name='create_accountTechnophiles'),
     path('create_accountEntreprises/', views.creer_compte_entrerpise, name='create_accountEntreprises'),
-
+    
 ]
