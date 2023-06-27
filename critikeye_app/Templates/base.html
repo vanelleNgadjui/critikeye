@@ -14,52 +14,93 @@
 
 <body class="text-white">
   <header>
-    <div class="grid grid-rows-2 md:grid-cols-2">
-
-      <div class="flew ">
-        <div class="col-span-1 md:hidden cursor-pointer" id="burger">
+    <div class="grid grid-cols-3 md:justify-between items-center">
+  
+      <!-- Burger et logo -->
+      <div class="grid items-center grid-cols-2 ">
+        <div class="md:hidden cursor-pointer" id="burger">
           <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </div>
         <div class="flex justify-center md:justify-start">
-          <a href="{% url 'index' %}">  <img src="{% static 'images/logo.svg' %}" alt="Logo" class="h-12"></a>
+          <a href="{% url 'index' %}"> <img src="{% static 'images/logo.svg' %}" alt="Logo" class="h-12"></a>
         </div>
       </div>
-
-      <nav class="hidden text-center md:block" id="menu">
-
-        <button class="md:hidden justify-end" id="close">
+  
+      <!-- Menu -->
+      <nav class="hidden md:flex md:justify-center items-center">
+        <!-- Menu principal -->
+        <ul class="flex flex-col space-y-2 md:space-y-0 md:flex-row md:items-center md:justify-center uppercase gap-12">
+          <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base">Home</a></li>
+          <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base">Watchers</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base">Contact</a></li>
+          {% if user.is_authenticated %}
+          <li class="md:hidden"><a href="{% url 'logout' %}"
+              class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary">Déconnexion</a>
+          </li>
+          {% else %}
+          <li class="md:hidden"><a href="{% url 'login' %}"
+              class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary">Connexion</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+  
+      <!-- Icône de connexion -->
+      <div class="hidden md:flex items-center justify-end pr-8">
+        <a href="{% url 'login' %}">
+          <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M23.0769 8.63953C23.0769 13.1349 19.4608 16.7791 15 16.7791C10.5392 16.7791 6.92308 13.1349 6.92308 8.63953C6.92308 4.14419 10.5392 0.5 15 0.5C19.4608 0.5 23.0769 4.14419 23.0769 8.63953Z"
+              fill="#00FFC2" />
+            <path
+              d="M0 30.5C1.32468e-07 28.973 0.387987 27.461 1.14181 26.0502C1.89563 24.6394 3.00052 23.3576 4.3934 22.2778C5.78628 21.1981 7.43987 20.3416 9.25975 19.7572C11.0796 19.1729 13.0302 18.8721 15 18.8721C16.9698 18.8721 18.9204 19.1729 20.7403 19.7572C22.5601 20.3416 24.2137 21.1981 25.6066 22.2778C26.9995 23.3576 28.1044 24.6394 28.8582 26.0502C29.612 27.461 30 28.973 30 30.5L0 30.5Z"
+              fill="#00FFC2" />
+          </svg>
+        </a>
+      </div>
+  
+    </div>
+  
+    <!-- Menu mobile -->
+    <div class="md:hidden" id="menu">
+      <div class="flex justify-end">
+        <button class="p-2" id="close">
           <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <ul class="flex flex-col md:justify-center md:items-center md:space-x-4 md:flex-row gap-6 uppercase">
-          <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
-          <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
-          <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>
+      </div>
+  
+      <nav class="flex flex-col items-center">
+        <!-- Menu principal -->
+        <ul class="flex flex-col space-y-2 uppercase">
+          <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base">Home</a></li>
+          <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base">Watchers</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base">Contact</a></li>
         </ul>
+  
+        <!-- Bouton de déconnexion ou de connexion -->
         {% if user.is_authenticated %}
         <a href="{% url 'logout' %}"
-          class="md:hidden rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary mt-12">
+          class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary mt-12">
           Déconnexion
         </a>
         {% else %}
         <a href="{% url 'login' %}"
-          class="md:hidden rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary mt-12">
+          class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider bg-white uppercase text-secondary mt-12">
           Connexion
         </a>
         {% endif %}
-
-
       </nav>
-
     </div>
-
   </header>
-
+  
+  
+  
 
   {% block content %}
 
@@ -68,36 +109,42 @@
   {% block footer %}
   <footer>
     <div class="bg-zinc-800 p-8 flex flex-col justify-center items-center">
-      <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4">
-        <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
-        <p class="text-center">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des
-          inventions futures?</p>
-        <ul class="flex flex-row justify-between items-center gap-4 ">
-          <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
-          <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
-          <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>
-        </ul>
-      </div>
-      <div class="flex flex-col justify-center items-center gap-2 mt-4">
-        <p class="text-center">Checkez nos réseaux sociaux !</p>
-        <div class='socials mt-4'>
-          <a href="https://twitter.com/CritikEye" target="_blank">
-            <img src="{% static 'images/twitter.svg' %}" alt="" />
-          </a>
-          <a href="https://www.tiktok.com/@critikeye" target="_blank">
-            <img src="{% static 'images/tiktok.svg' %}" alt="" />
-          </a>
-          <a href="https://www.instagram.com/critikeye/" target="_blank">
-            <img src="{% static 'images/insta.svg' %}" alt="" />
-          </a>
-          <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank">
-            <img src="{% static 'images/linkedin.svg' %}" alt="" />
-          </a>
+      <div class="flex flex-col justify-center items-center md:flex-row">
+        <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4 md:border-none md:flex-row md:items-start">
+          <div class="flex flex-col justify-center items-center gap-2">
+            <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
+            <p class="text-center md:text-start md:w-[30%]">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures?</p>
+          </div>
+          <ul class="flex flex-col md:flex-row justify-start items-start gap-4 md:gap-0 md:w-[30%]">
+            <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base">Home</a></li>
+            <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base">Watchers</a></li>
+            <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base">Contact</a></li>
+          </ul>
         </div>
-        <p class="text-center">© Copyright 2023 | Mentions légales | Tous droits réservés | Hebergé par Viaduc ®</p>
+        <div class="flex flex-col justify-center items-center gap-2 mt-4 md:flex-row md:w-[30%]">
+          <div class="flex flex-col justify-center items-center">
+            <p class="text-center">Checkez nos réseaux sociaux !</p>
+            <div class="socials mt-4">
+              <a href="https://twitter.com/CritikEye" target="_blank">
+                <img src="{% static 'images/twitter.svg' %}" alt="">
+              </a>
+              <a href="https://www.tiktok.com/@critikeye" target="_blank">
+                <img src="{% static 'images/tiktok.svg' %}" alt="">
+              </a>
+              <a href="https://www.instagram.com/critikeye/" target="_blank">
+                <img src="{% static 'images/insta.svg' %}" alt="">
+              </a>
+              <a href="https://www.linkedin.com/in/critik-eye-046366278/" target="_blank">
+                <img src="{% static 'images/linkedin.svg' %}" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+      <p class="text-center md:bg-green_secondary md:p-4 md:w-full">© 2023 | Mentions légales | Tous droits réservés | Hébergé par Viaduc ®</p>
     </div>
   </footer>
+  
   {% endblock %}
   <!-- Ajoutez d'autres scripts et éléments communs à toutes les pages ici -->
   {% tracking_code %}
