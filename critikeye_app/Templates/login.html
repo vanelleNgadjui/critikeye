@@ -11,7 +11,7 @@
     </div>
 
     <div class="bg-zinc-800 p-8 rounded-xl mt-8">
-        <p>Inscrivez-vous afin de découvrir votre espace personnel, ainsi que les produits à tester. </p>
+        <p>Connectez-vous afin de pouvoir accédez à votre espace personnel, ainsi que les produits à tester.  </p>
 
         <form class="form mt-6 w-full" method="POST" action="{% url 'user_login' %}">
             {% csrf_token %}
@@ -37,7 +37,7 @@
                  checked:after:border-white checked:after:bg-transparent
                   checked:after:content-[''] hover:cursor-pointer" type="checkbox" value="connexion" id="connexion" />
                 <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-center text-green_secondary"
-                    for="conexion">
+                    for="connexion">
                     Restez connecté !
                 </label>
             </div>

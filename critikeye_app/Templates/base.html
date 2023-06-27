@@ -24,7 +24,7 @@
           </svg>
         </div>
         <div class="flex justify-center md:justify-start">
-          <img src="{% static 'images/logo.svg' %}" alt="Logo" class="h-12">
+          <a href="{% url 'index' %}">  <img src="{% static 'images/logo.svg' %}" alt="Logo" class="h-12"></a>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <ul class="flex flex-col md:justify-center md:items-center md:space-x-4 md:flex-row gap-6">
+        <ul class="flex flex-col md:justify-center md:items-center md:space-x-4 md:flex-row gap-6 uppercase">
           <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base ">Home</a></li>
           <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base ">watchers</a></li>
           <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base ">Contact</a></li>

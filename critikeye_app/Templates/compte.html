@@ -10,10 +10,14 @@
     <h1 class="">Mon compte</h1>
     <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
   </div>
-
+  <h1>Résultat :</h1>
+  <p>Les réponses sélectionnées sont : {{ selected_responses }}</p>
+  <p>Le résultat est : {{ result }}</p>
+  
   <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
-    <button type="submit">Déconnexion</button>
+    <button type="submit"
+    class="rounded-full py-2 px-3 text-xs cursor-pointer tracking-wider border border-green_secondary   uppercase text-green_secondary mt-12 font-bold">Deconnexion</button>
   </form>
 </main>
 

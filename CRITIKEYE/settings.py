@@ -172,3 +172,5 @@ LOGIN_REDIRECT_URL = 'index'
 # Définir les URL pour les vues de connexion et de déconnexion
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+# AUTH_USER_MODEL='critikeye_app.Entreprise'

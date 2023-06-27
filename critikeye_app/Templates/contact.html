@@ -4,12 +4,41 @@
 <!-- Ajoutez cette ligne pour charger les balises statiques -->
 
 {% block content %}
-<main>
-  <form method="post">
-    {% csrf_token %}
-    {{ contact_form }}
-    <button type="submit">Envoyer</button>
-  </form>
+<main class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center">
+
+  <div class="mb-8 flex items-start">
+    <h1 class="">Contact</h1>
+    <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
+  </div>
+  <div class="bg-zinc-800 p-8 rounded-xl mt-8">
+    <p>N’hésitez pas à nous contacter pour plus d’informations, ainsi que pour n’’importe qu’elle demande particulière
+      😉</p>
+    <form class="form mt-6 w-full" method="post">
+      {% csrf_token %}
+      <div class="mb-4 w-full rounded-xl border border-green_secondary">
+        {{ contact_form.nom }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ contact_form.email }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ contact_form.raison_sociale }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ contact_form.numero }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ contact_form.message }}
+      </div>
+
+
+      <button type="submit"
+        class="rounded-full py-2 px-3 text-xs cursor-pointer tracking-wider border border-green_secondary   uppercase text-green_secondary mt-12 font-bold">Envoyer</button>
+    </form>
+  </div>
+
+
+
 </main>
 
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->

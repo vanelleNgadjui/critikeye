@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from django.http import HttpResponseBadRequest
@@ -27,29 +27,33 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 
-
 # Le décorateur @csrf_protect est nécessaire pour protéger votre formulaire contre les attaques CSRF (Cross-Site Request Forgery).
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 
-
-
-
-
-
+from itertools import zip_longest
+from django.core.paginator import Paginator
 
 # Pages
 def about(request):
     return render(request, 'about.html')
+
+
 def technophilesHome(request):
     return render(request, 'technophilesHome.html')
+
+
 def entreprises(request):
     return render(request, 'entreprises.html')
+
+
 def fiche_produit(request):
     return render(request, 'fiche_produit.html')
 
 # Newsletters
-def index (request):
+
+
+def index(request):
     if request.method == 'POST':
         form = NewsletterSubscriberForm(request.POST)
         if form.is_valid():
@@ -58,7 +62,7 @@ def index (request):
             return render(request, 'index.html')
     else:
         form = NewsletterSubscriberForm()
-    
+
     context = {'newsletter_form': form}
     return render(request, 'index.html', context)
 
@@ -88,17 +92,17 @@ def create_product(request):
             return HttpResponseBadRequest(render(request, 'fiche_produit.html', context))
     else:
         form = ProductForm()
-    
+
     context = {'product_form': form}
     return render(request, 'fiche_produit.html', context)
-
 
 
 def appeler_api_dalle(prompt):
     # Convertir les données du formulaire en format adapté pour l'API DALL·E
     description_produit = prompt
     translator = Translator(service_urls=["translate.google.com"])
-    translated_description_produit = translator.translate(description_produit, src="fr", dest="en").text
+    translated_description_produit = translator.translate(
+        description_produit, src="fr", dest="en").text
 
     # openai.api_key = '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'
     # response = openai.Image.create(
@@ -148,7 +152,8 @@ def appeler_api_dalle(prompt):
             image_content = response.content
             image_base64 = base64.b64encode(image_content).decode("utf-8")
 
-            send_emails(image_content)  # Modifier pour envoyer l'image binaire au lieu de l'image encodée en base64
+            # Modifier pour envoyer l'image binaire au lieu de l'image encodée en base64
+            send_emails(image_content)
 
             # Stocker l'image dans une variable de session
             # request.session['generated_image'] = image_base64
@@ -160,8 +165,6 @@ def appeler_api_dalle(prompt):
         print("Échec de la génération de l'image")
 
     return image_base64
-
-
 
 
 def send_emails(image_generee):
@@ -192,7 +195,8 @@ def send_emails(image_generee):
         part = MIMEBase("image", "png")  # Modifier le type MIME si nécessaire
         part.set_payload(image_generee)
         encoders.encode_base64(part)
-        part.add_header("Content-Disposition", "attachment", filename="mon_produit_de_reve.png")
+        part.add_header("Content-Disposition", "attachment",
+                        filename="mon_produit_de_reve.png")
         msg.attach(part)
 
         # Envoyer le mail en utilisant SMTP
@@ -205,7 +209,6 @@ def send_emails(image_generee):
             server.starttls()
             server.login(smtp_username, smtp_password)
             server.sendmail(from_email, to_email, msg.as_string())
-
 
 
 #  Envoie du mail pour le formulaire contact
@@ -253,31 +256,30 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
-
-
-
 def user_login(request):
     if request.method == 'POST':
-        # Traitement des requêtes POST
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        # Vérification CSRF
+        email = request.POST['email']
+        password = request.POST['password']
         user = authenticate(request, email=email, password=password)
         if user is not None:
-            login(request, user)
-            # Faites ici les actions nécessaires après la connexion
-            return redirect('compte')
+            if user.is_authenticated:
+                # Authentification réussie, connectez l'utilisateur
+                login(request, user)
+                return redirect('compte')
+            else:
+                # L'utilisateur n'est pas authentifié, gérer l'erreur
+                return render(request, 'login.html', {'error_message': 'L\'authentification a échoué.'})
         else:
-            # Gérer l'authentification invalide
-            # return HttpResponse("Authentification invalide")
-            return render(request, 'login.html')
+            # Authentification échouée, affichez la page de connexion avec un message d'erreur
+            return render(request, 'login.html', {'error_message': 'Identifiants invalides.'})
     else:
-        # Gérer les requêtes GET
+        # Affichez simplement la page de connexion
         return render(request, 'login.html')
 
 def user_logout(request):
     logout(request)
     return redirect('index')
-
 
 # user cennected  ?
 def my_view(request):
@@ -299,9 +301,16 @@ def compte(request):
 
 
 def technophiles(request):
+    questions = Question.objects.all()
+    questions_par_slide = 2
+    # Regroupement des questions par slide
+    grouped_questions = [
+        questions[i:i + questions_par_slide]
+        for i in range(0, len(questions), questions_par_slide)
+    ]
+
     if request.method == 'POST':
         if 'questionnaire_form' in request.POST:
-            questions = Question.objects.all()
             questionnaire_form = QuestionnaireForm(request.POST, questions=questions)
             if questionnaire_form.is_valid():
                 for question in questions:
@@ -309,7 +318,7 @@ def technophiles(request):
                     selected_reponse = question.reponse_set.get(id=selected_reponse_id)
                     selected_reponse.est_selectionnee = True
                     selected_reponse.save()
-
+                
                 reponses_correctes = Reponse.objects.filter(
                     question__in=questions,
                     est_selectionnee=True,
@@ -326,7 +335,16 @@ def technophiles(request):
                     technophile.save()
                     user = authenticate(request, username=username, password=password)
                     login(request, user)
-                    return redirect('compte')
+                    
+                    # Récupérer les réponses sélectionnées par l'utilisateur
+                    selected_responses = []
+                    for group in grouped_questions:
+                        for question in group:
+                            selected_response_id = request.POST.get(f'question{question.id}', None)
+                            if selected_response_id is not None:
+                                selected_responses.append(int(selected_response_id))
+                    
+                    return redirect('compte', selected_responses=selected_responses)
 
                 context = {
                     'questionnaire_form': questionnaire_form,
@@ -341,36 +359,39 @@ def technophiles(request):
             if technophile_form.is_valid():
                 user = technophile_form.save()  # Enregistrement de l'utilisateur Technophile
                 login(request, user)  # Connexion de l'utilisateur
-                return redirect('compte')
+                
+                # Récupérer les réponses sélectionnées par l'utilisateur
+                selected_responses = []
+                for group in grouped_questions:
+                    for question in group:
+                        selected_response_id = request.POST.get(f'question{question.id}', None)
+                        if selected_response_id is not None:
+                            selected_responses.append(int(selected_response_id))
+                
+                return redirect('compte', selected_responses=selected_responses)
             else:
                 # Gérer le cas où le formulaire n'est pas valide
-                questions = Question.objects.all()
                 questionnaire_form = QuestionnaireForm(questions=questions)
                 context = {
                     'questionnaire_form': questionnaire_form,
                     'technophile_form': technophile_form,
-                    'questions': questions,
+                    'grouped_questions': grouped_questions,
                     'errors': technophile_form.errors
                 }
                 return render(request, 'technophiles.html', context)
 
     else:
         # Affichage initial de la page avec les formulaires
-        questions = Question.objects.all()
         questionnaire_form = QuestionnaireForm(questions=questions)
         technophile_form = TechnophileForm()
+        
         context = {
             'questionnaire_form': questionnaire_form,
             'technophile_form': technophile_form,
-            'questions': questions,
+            'grouped_questions': grouped_questions,
             'errors': technophile_form.errors
         }
-        return render(request, 'technophiles.html', context)
-
-    return render(request, 'technophiles.html')
-
-
-
+    return render(request, 'technophiles.html', context)
 
 def creer_compte_technophile(request):
     if request.method == 'POST':
@@ -406,7 +427,7 @@ def creer_compte_technophile(request):
         }
         return render(request, 'create_accountTechnophiles.html', context)
 
-
+@csrf_protect
 def creer_compte_entrerpise(request):
     if request.method == 'POST':
         entreprise_form = EntrepriseForm(request.POST)
@@ -446,3 +467,16 @@ def creer_compte_entrerpise(request):
 
 def page_not_found(request, exception):
     return render(request, '404.html', status=404)
+
+
+def set_cookie(request):
+    response = HttpResponse("Cookie set!")
+    response.set_cookie('my_cookie', 'cookie_value')
+    return response    
+
+def get_cookie(request):
+    cookie_value = request.COOKIES.get('my_cookie')
+    if cookie_value:
+        return HttpResponse("Cookie value: " + cookie_value)
+    else:
+        return HttpResponse("Cookie not found!")

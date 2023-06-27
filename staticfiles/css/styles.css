@@ -7,6 +7,13 @@
     @apply rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider
 } */
 
+input, textarea{
+    background: none;
+    outline: none;
+}
+input::placeholder, textarea::placeholder {
+    color:white;
+}
 
 
 

@@ -4,12 +4,39 @@
 <!-- Ajoutez cette ligne pour charger les balises statiques -->
 
 {% block content %}
-<main>
-  <form method="post">
-    {% csrf_token %}
-    {{ product_form }}
-    <button type="submit">Envoyer</button>
-  </form>
+<main class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center">
+  <div class="mb-8 flex items-start">
+    <h1 class="">DE L’IDÉE À L’IMAGE</h1>
+    <div class="bg-star w-[2rem] h-[1.4rem]"></div>
+  </div>
+
+  <div class="bg-zinc-800 p-8 rounded-xl mt-8">
+    <h3 class="text-green_secondary mb-2">réalisez votre gadget de rêve en un clin d'oeil !
+    </h3>
+    <p>Libérez votre créativité et visualisez votre gadget technologique idéal grâce à notre service de représentation
+      visuelle. Remplissez le formulaire dès maintenant et laissez notre équipe experte donner vie à vos idées les plus
+      novatrices avec une représentation visuelle immersive.
+      Votre Nom et Prénom*
+      Votre adresse mail*
+      Description du produit*
+      génerer</p>
+    <form class="form mt-6 w-full" method="post">
+      {% csrf_token %}
+      <div class="mb-4 w-full rounded-xl border border-green_secondary">
+        {{ product_form.name }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ product_form.email }}
+      </div>
+      <div class="mb-4  py-2 px-4 w-full rounded-xl border border-green_secondary">
+        {{ product_form.description }}
+      </div>
+
+
+      <button type="submit"
+        class="rounded-full py-2 px-3 text-xs cursor-pointer tracking-wider border border-green_secondary   uppercase text-green_secondary mt-12 font-bold">Générer</button>
+    </form>
+  </div>
 </main>
 
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->

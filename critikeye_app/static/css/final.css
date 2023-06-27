@@ -550,6 +550,18 @@ video {
   margin-bottom: 3rem;
 }
 
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -560,6 +572,10 @@ video {
 
 .mb-\[0\.125rem\] {
   margin-bottom: 0.125rem;
+}
+
+.mb-\[0\.5rem\] {
+  margin-bottom: 0.5rem;
 }
 
 .ml-12 {
@@ -634,6 +650,10 @@ video {
   height: 1.3rem;
 }
 
+.h-\[1\.4rem\] {
+  height: 1.4rem;
+}
+
 .min-h-\[1\.5rem\] {
   min-height: 1.5rem;
 }
@@ -652,6 +672,10 @@ video {
 
 .w-\[1\.3rem\] {
   width: 1.3rem;
+}
+
+.w-\[2rem\] {
+  width: 2rem;
 }
 
 .w-full {
@@ -704,6 +728,10 @@ video {
   gap: 3rem;
 }
 
+.gap-14 {
+  gap: 3.5rem;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
@@ -714,6 +742,10 @@ video {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded-\[0\.25rem\] {
@@ -812,8 +844,16 @@ video {
   padding-left: 0.15rem;
 }
 
+.pl-\[0\.5rem\] {
+  padding-left: 0.5rem;
+}
+
 .pl-\[1\.5rem\] {
   padding-left: 1.5rem;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -866,20 +906,24 @@ video {
   outline-offset: 2px;
 }
 
+.duration-700 {
+  transition-duration: 700ms;
+}
+
 /* .btn{
     @apply rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider
 } */
 
-input{
+input, textarea{
   background: none;
   outline: none;
 }
 
-input::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   color:white;
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder {
   color:white;
 }
 
@@ -1645,6 +1689,14 @@ textarea {
     display: none;
   }
 
+  .md\:h-96 {
+    height: 24rem;
+  }
+
+  .md\:w-\[50\%\] {
+    width: 50%;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1663,6 +1715,10 @@ textarea {
 
   .md\:justify-center {
     justify-content: center;
+  }
+
+  .md\:gap-20 {
+    gap: 5rem;
   }
 
   .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {

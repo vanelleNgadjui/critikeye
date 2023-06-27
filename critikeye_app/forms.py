@@ -12,7 +12,9 @@ class NewsletterSubscriberForm(forms.ModelForm):
     class Meta:
         model = NewsletterSubscriber
         fields = ['email']
-
+        widgets = { 
+            'email': forms.EmailInput(attrs={'class': "w-full rounded-xl text-white  ", 'placeholder': 'Votre email'}),
+        }
 # Fiche produit
 
 
@@ -20,24 +22,43 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'email', 'description']
-
+        widgets = {
+            'name': forms.TextInput(attrs={'class': "w-full   py-2 px-4 rounded-xl text-white", 'placeholder': 'Votre nom'}),
+            'email': forms.EmailInput(attrs={'class': "w-full rounded-xl text-white  ", 'placeholder': 'Votre email'}),
+            'description': forms.Textarea(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': 'Description de votre produit'}),
+        }
 # formulaire de contact
 
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['nom', 'prenom', 'email',
+        fields = ['nom', 'email',
                   'raison_sociale', 'numero', 'message']
-
+        widgets = {
+            'nom': forms.TextInput(attrs={'class': "w-full   py-2 px-4 rounded-xl text-white", 'placeholder': 'Nom et prenom'}),
+            'email': forms.EmailInput(attrs={'class': "w-full rounded-xl text-white  ", 'placeholder': 'Email'}),
+            'raison_sociale': forms.TextInput(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': 'raison sociale'}),
+            'numero': forms.NumberInput(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': 'numéro de téléphone'}),
+            'message': forms.Textarea(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': 'Message'}),
+        }
 
 # creation de compte
+
+
 class EntrepriseForm(UserCreationForm):
     class Meta:
         model = Entreprise
         fields = ['username', 'email', 'raison_sociale',
                   'numero', 'password1', 'password2']
-
+        widgets = {
+            'username': forms.TextInput(attrs={'class': "w-full   py-2 px-4 rounded-xl text-white", 'placeholder': 'Nom d\'utilisateur'}),
+            'email': forms.EmailInput(attrs={'class': "w-full py-2 px-4 rounded-xl text-white  ", 'placeholder': 'Email'}),
+            'raison_sociale': forms.TextInput(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': 'raison sociale'}),
+            'numero': forms.NumberInput(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': 'numéro de téléphone'}),
+            'password1': forms.PasswordInput(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': '**********'}),
+            'password2': forms.PasswordInput(attrs={'class': "w-full h-full rounded-xl text-white  ", 'placeholder': '*********'}),
+        }
 
 class TechnophileForm(UserCreationForm):
     class Meta:
@@ -51,6 +72,8 @@ class TechnophileForm(UserCreationForm):
         }
 
 #  QCM
+
+
 class QuestionnaireForm(forms.Form):
     def __init__(self, questions, *args, **kwargs):
         super(QuestionnaireForm, self).__init__(*args, **kwargs)
