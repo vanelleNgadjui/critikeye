@@ -550,8 +550,16 @@ video {
   top: 0.5rem;
 }
 
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .float-left {
   float: left;
+}
+
+.m-12 {
+  margin: 3rem;
 }
 
 .m-8 {
@@ -594,12 +602,8 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.ml-12 {
-  margin-left: 3rem;
-}
-
-.mr-12 {
-  margin-right: 3rem;
+.mb-\[6rem\] {
+  margin-bottom: 6rem;
 }
 
 .mr-4 {
@@ -762,6 +766,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -991,27 +999,37 @@ input::placeholder, textarea::placeholder {
   color:white;
 }
 
-/* Styles CSS pour la bannière de consentement aux cookies */
-
-.modal {
-  display: none;
-  /* Masquer la bannière par défaut */
+#cookie-banner {
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
   position: fixed;
-  z-index: 999;
+  bottom: 0;
   left: 0;
-  top: 0;
   width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(100%);
 }
 
-.modal-content {
-  background-color: white;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+#cookie-banner.show {
+  transform: translateY(0);
+}
+
+#cookie-banner p {
+  margin: 0;
+}
+
+#accept-cookies {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#accept-cookies:hover {
+  background-color: #45a049;
 }
 
 /* Autres styles CSS pour le reste de la page d'accueil */
@@ -1074,7 +1092,6 @@ body {
   background-image: url("../images/Rectanglebg.png");
   height: -moz-fit-content;
   height: fit-content;
-  margin: 4px;
 }
 
 a {
@@ -1492,6 +1509,12 @@ h3 {
 
 /* ========== Section: NOS SERVICES ========== */
 
+.section-projects{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .services .presentation-text-services {
   display: flex;
   flex-direction: column;
@@ -1537,7 +1560,7 @@ h3 {
 .carousel-item {
   display: none;
   text-align: center;
-  padding: 20px 40px;
+  /* padding: 20px 40px; */
 }
 
 .carousel-item.active {
@@ -1990,7 +2013,7 @@ h3 {
   .carousel-item {
     display: none;
     text-align: center;
-    padding: 20px 40px;
+    /* padding: 20px 40px; */
   }
 
   .carousel-item.active {
@@ -2503,13 +2526,13 @@ h3 {
   .carousel {
     overflow: hidden;
     border-radius: 5px;
-    padding: 20px;
+    /* padding: 20px; */
   }
 
   .carousel-item {
     display: none;
     text-align: center;
-    padding: 20px 40px;
+    /* padding: 20px 40px; */
   }
 
   .carousel-item.active {
@@ -2819,6 +2842,14 @@ h3 {
 }
 
 @media (min-width: 768px) {
+  .md\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .md\:flex {
     display: flex;
   }
@@ -2908,6 +2939,10 @@ h3 {
 
   .md\:p-8 {
     padding: 2rem;
+  }
+
+  .md\:pb-0 {
+    padding-bottom: 0px;
   }
 
   .md\:pl-0 {

@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<main class="m-8">
+<main class="m-8 mt-12">
 
 
 
@@ -241,14 +241,14 @@
       </div>
 
       <!-- Slider -->
-      <div class="carousel-home-container">
+      <div class="carousel-container">
         <!-- Bouton Précédant -->
-        <div class="carousel-home-controls">
-          <button class="carousel-home-prev" onclick="changeSlide(-1)"><</button>
+        <div class="carousel-controls">
+          <button class="carousel-prev" id="carousel-prev" onclick="changeSlide(-1)"><</button>
         </div>
 
-        <div class="carousel-home">
-          <div class="carousel-home-item active">
+        <div class="carousel">
+          <div class="carousel-item item-carousel active">
             <p>
               <strong class="green-text">Test en avant-première de
                 <strong class="seo">produits technologiques</strong> :
@@ -262,7 +262,7 @@
             </p>
           </div>
 
-          <div class="carousel-home-item">
+          <div class="carousel-item item-carousel">
             <p>
               <strong class="green-text">
                 <strong class="seo">Évaluation de produits :</strong>
@@ -279,7 +279,7 @@
             </p>
           </div>
 
-          <div class="carousel-home-item">
+          <div class="carousel-item item-carousel">
             <p>
               <strong class="green-text">
                 <strong class="seo">Accès à des produits exclusifs :</strong>
@@ -296,7 +296,7 @@
             </p>
           </div>
 
-          <div class="carousel-home-item">
+          <div class="carousel-item item-carousel">
             <p>
               <strong class="green-text">
                 <strong class="seo">Collaboration avec des entreprises innovantes :</strong>
@@ -314,7 +314,7 @@
          
         </div>
         <div>
-          <button class="carousel-home-next" onclick="changeSlide(1)">></button>
+          <button class="carousel-next" id="carousel-next-home" onclick="changeSlide(1)">></button>
         </div>
       </div> <!-- fin NOS SERVICES -->
 
@@ -346,7 +346,7 @@
     </div>
   </section>
 
-  <section class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center">
+  <section class="flex text-center mb-12 flex-col justify-center items-center">
     <div class="mb-8 flex items-start">
       <h1 class="">newsletter</h1>
       <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
@@ -479,7 +479,11 @@
         <a href="{% url 'cookie_preferences' %}">ici</a>.</p>
     </div>
   </div> -->
-
+  <div id="cookie-banner">
+    <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
+    <button id="accept-cookies">J'accepte</button>
+  </div>
+  
   <button id="cookie-preferences-link">Gérer les préférences de cookies</button>
 
   <!-- Elément modal pour les préférences de cookies -->

@@ -4,11 +4,11 @@
 <!-- Ajoutez cette ligne pour charger les balises statiques -->
 
 {% block content %}
-<main class="flex text-center mr-12 ml-12 mb-12 flex-col justify-center items-center">
+<main class="flex text-center m-12 flex-col justify-center items-center">
   <div class="carousel relative w-full md:w-[60%]">
     <form class="form mt-6 w-full" method="POST" action="{% url 'compte' %}">
       {% for group in grouped_questions %}
-      <div class="carousel-item relative overflow-hidden rounded-lg md:h-96">
+      <div class="carousel-item item relative overflow-hidden rounded-lg md:h-96">
         {% for question in group %}
         <div class="question duration-700 ease-in-ou mb-14">
           <p>{{ question.question_text }}</p>

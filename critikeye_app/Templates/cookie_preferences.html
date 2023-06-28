@@ -4,14 +4,18 @@
 
 {% block content %}
 <main>
-    <h1>Cookies - Préférences</h1>
-    <!-- cookie_preferences.html -->
-    <form method="post">
-        {% csrf_token %}
-        {{ cookies_form.as_p }}
-        <button type="submit">Enregistrer</button>
-    </form>
-
+    {% if not request.COOKIES.cookie_consent %}
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>Ce site utilise des cookies. Veuillez choisir vos préférences :</p>
+            <form method="post" action="{% url 'cookie_preferences' %}">
+                {% csrf_token %}
+                {{ cookies_form }}
+                <button type="submit">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
 </main>
 
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
