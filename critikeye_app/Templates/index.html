@@ -1,153 +1,463 @@
 {% extends 'base.html' %}
-
 {% load static %}
-<!-- Ajoutez cette ligne pour charger les balises statiques -->
-
 {% block content %}
-<main class="flex flex-col justify-center items-center gap-12 text-center mb-12 mr-12 ml-12 ">
-  <section>
-    <div class="imageLogo">
 
-    </div>
-    <div class="text-presentation">
+<main class="m-8">
 
+
+
+<!-- ========== Section: PRÉSENTATION ========== -->
+
+  <section class="section-presentation">
+    <!-- Image lunettes 3D-->
+      <div class="lunettes3D-image">
+        <div id="presentation-block"> <!-- Contient le titre, le texte de présentation, le bouton (Participez)-->
+        <h1>
+          <strong>L'oeil de la Tech,
+            <br>
+            <strong id="critikeye-h1"> CRITIKEYE</strong>
+        </strong>
+        </h1>
+          <p id="text-section-presentation">Êtes-vous prêt à nous faire part de vos opinions qui 
+            nous permettront d'améliorer des inventions futures ?
+          </p>
+          <img
+          src="{% static 'images/bouton-participez.webp' %}"
+          id="bouton-participez"
+          onclick="window.location.href='https://www.youtube.com/watch?v=1PO2AVXWBhk&list=RDMxU7_yMttEs&index=13';" /> <!-- Image du bouton PARTICIPEZ!-->
+      </div>
+      <!-- Background image (lunettes3D) -->
+      <div class="image-lunettes3D"></div>
+        <img 
+        src="{% static 'images/lunettes3D.webp' %}"
+        alt="Critikeye lunettes 3D">
+      </div>
+      <!-- Texte-->
+    <div class="presentation-text">
+      <p class="text" id="text-presentation">ICI ON PRESENTE
+        <strong>CRITIKEYE</strong>
+      </p>
+      <p id="text-presentation2">Êtes-vous prêt à nous faire part de vos opinions qui 
+        nous permettront d'améliorer des inventions futures ?
+      </p>
     </div>
-    <div class="bande"></div>
+
+<!-- Slider -->
+<div id="critikeye-slider-section-presentation">
+  <div class="slider-track">
+    <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+    <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+    <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+    <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+  </div>
+</div>
   </section>
 
-  <section>
-    <div class="watchers">
-      <h3></h3>
-      <div>
-        <p></p>
-        <img src="" alt="">
+
+  
+  <div class="scroll-down-button">
+    <img 
+    src="{% static 'images/scroll-down-button.png' %}" id="scroll-down-button"
+    onclick="window.location.href='#section-newsletter';" />
+  </div>
+  
+
+
+<!-- ========== Section: WATCHERS (TECHNOPHILES) & entreprises ========== -->
+  
+<section class="section-watchers-enterprises">
+  <!-- WATCHERS -->
+  <div class="watchers">
+    <!-- Titre -->
+    <div class="title-section">
+      <h3>
+        <strong>WATCHERS</strong>
+      </h3>
+    </div>
+    <!-- Texte -->
+      <div class="text-section">
+        <p class="text">Envie de savoir qui sont les technophiles ?</p>
       </div>
-      <div>
-        <p></p>
-        <button></button>
+      <!-- Image -->
+      <div class="image-section">
+        <img
+        class="women-image"
+        src="{% static 'images/women-cloud.webp' %}" alt="transfert de fichier vers le cloud">
+      </div>
+      <!-- Texte -->
+      <div class="text-section">
+        <p class="text">
+          <strong>Le Gamer</strong>
+        </p>
+      </div>
+      <!-- Bouton -->
+      <div class="image-section">
+        <a href="#">
+        <img
+        class="rejoins-nous-image"
+        src="{% static 'images/rejoins-nous.webp' %}" 
+        alt="transfert de fichier vers le cloud"
+        onclick="window.location.href='https://www.critikeye.com/technophiles';">
+        </a>
       </div>
     </div>
 
-    <div class="entrerpise">
-      <h3></h3>
-      <div>
-        <p></p>
-        <img src="" alt="">
+
+    <!-- ENTREPRISES -->
+  <div class="enterprises">
+    <!-- Titre -->
+    <div class="title-section">
+      <h3>
+        <strong>ENTREPRISES</strong>
+      </h3>
+    </div>
+    <!-- Texte -->
+      <div class="text-section">
+        <p class="text">Besoin de faire tester votre produit ?</p>
       </div>
-      <div>
-        <p></p>
-        <button></button>
+      <!-- Image -->
+      <div class="image-section">
+        <img
+        class="women-image"
+        src="{% static 'images/women-drone.webp' %}" alt="transfert de fichier vers le cloud">
+      </div>
+      <!-- Texte -->
+      <div class="text-section">
+        <p class="text">Mais vous manquez de fonds ...Profitez de l’avis de nos testeurs !
+        </p>
+      </div>
+      <!-- Bouton -->
+      <div class="image-section">
+        <a href="#">
+          <img
+          class="rejoins-nous-image"
+        src="{% static 'images/rejoins-nous.webp' %}" alt="femme avec un drone">
+        </a>
       </div>
     </div>
-    <div class="fonction">
-      <div class="text">
-        <div>
-          <h3></h3>
-        </div>
-        <p></p>
+</section>
+
+
+
+<!-- Slider -->
+    <div id="critikeye-slider-section-watchers-enterprises">
+      <div class="slider-track">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
       </div>
-      <div>
-        <p></p>
-        <img src="" alt="">
+    </div> 
+
+
+
+<!-- ========== Section: COMMENT ÇA FONCTIONNE ========== -->
+
+<section class="how">
+  <!-- Conteneur de la section -->
+  <div class="how-container">
+    <!-- Texte-->
+    <div class="presentation-text-how">
+      <h2>COMMENT ÇA FONCTIONNE ?</h2>
+      <p id="text-presentation-how">Découvrez notre startup révolutionnaire, votre passerelle privilégiée
+        <br> entre les entreprises technologiques et les passionnés comme vous.
+      </p>
+    </div>
+
+        <!-- how card -->
+  <div class="how-card">
+    <!-- Texte -->
+    <div class="how-section">
+      <p>
+        Grâce à notre plateforme, vous aurez accès à un écosystème diversifié de
+        <strong class="seo"> technophiles </strong>
+        spécialisés dans différents domaines technologiques, tout en bénéficiant de l'opportunité exclusive de tester en avant-première les
+        <strong class="seo"> produits technologiques </strong>
+        les plus
+        <strong class="seo"> innovants </strong>
+        avant leur lancement officiel. 
+      </p>
+    </div>
+      <!-- Image -->
+      <div class="image-section">
+        <img
+        id="woman-planet"
+        class="women-image"
+        src="{% static 'images/woman-planet.webp' %}"
+        alt="femme et planètes">
       </div>
     </div>
 
-    <div class="bande"></div>
+
+  </div> <!-- fin how-->
+</section>
+
+  <div class="section-slider">
+    <!-- Slider -->
+    <div id="critikeye-slider-section-how">
+      <div class="slider-track">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+      </div>
+    </div>
+  </div>
+
+<!-- ========== Section: DES CHIFFRES ========== -->
+
+<section class="section-numbers">
+  <!-- Conteneur de la section -->
+  <div class="numbers"> <!-- Contient-->
+    <!-- Texte-->
+    <div class="presentation-text-numbers">
+      <h2>DES CHIFFRES ?</h2>
+    </div>
+    <!-- Conteneur des chiffres -->
+    <div class="french-stats">
+      <!-- Texte -->
+    <div class="stats-container">
+      <span class="stats">58%</span>
+      <p>
+        Des français estiment que la technologie peut
+        <br>
+        être une solution pour développer
+        <br>
+        des emplois bien rémunérés. 
+      </p>
+    </div>
+      <!-- Texte -->
+    <div class="stats-container">
+      <span class="stats">70%</span>
+      <p>
+        Des internautes lisent des avis sur des
+        <br>
+        produits qu’ils comptent potentiellement
+        <br>
+        acheter par la suite. 
+      </p>
+    </div>
+  </div> <!-- fin Conteneur des chiffres-->
+  </div>
   </section>
 
-  <section>
-    <div class="chiffre">
-      <div>
-        <h3></h3>
-      </div>
-      <div>
-        <p class="pourcentage"></p>
-        <p></p>
-      </div>
-      <div>
-        <p class="pourcentage"></p>
-        <p></p>
-      </div>
-    </div>
+
+
+<!-- ========== Section: NOS SERVICES ========== -->
+
+  <section class="section-services">
+    <!-- Conteneur de la section -->
     <div class="services">
-      <h3></h3>
-      <p></p>
-    </div>
-
-    <div class="bande"></div>
-  </section>
-  <section>
-    <div>
-      <div>
-        <h2></h2>
+      <!-- Texte-->
+      <div class="presentation-text-services">
+        <h2>NOS SERVICES</h2>
       </div>
 
-      <button></button>
+  <!-- Slider -->
+  <div class="carousel-container">
+    <!-- Bouton Précédant -->
+    <div class="carousel-controls">
+      <button 
+      class="carousel-prev" 
+      onclick="changeSlide(-1)"><</button>
     </div>
-  </section>
+  
+    <div class="carousel">
+      <div class="carousel-item active">
+        <p>
+          <strong class="green-text">Test en avant-première de
+            <strong class="seo">produits technologiques</strong> :
+            <br>
+          </strong>
+          En tant que membre de la
+          <strong class="seo">communauté Critikeye</strong>, vous aurez accès à des
+          <strong class="seo">produits technologiques exclusifs</strong> avant leur lancement officiel. Vous pourrez les
+          tester, évaluer leur qualité, leur fonctionnement, et partager votre avis avec les entreprises innovantes.
+        </p>
+      </div>
+  
+      <div class="carousel-item">
+        <p>
+          <strong class="green-text">
+            <strong class="seo">Évaluation de produits :</strong>
+            <br>
+          </strong>
+          Votre
+          <strong class="seo">opinion</strong> compte ! Vos
+          <strong class="seo">retours</strong> aident les entreprises à améliorer leurs produits et à répondre aux <strong
+            class="seo">besoins des utilisateurs.</strong> Chaque
+          <strong class="seo">évaluation</strong> que vous effectuez sera
+          <strong class="seo">récompensée</strong>, transformant ainsi votre
+          <strong class="seo">passion pour la technologie</strong> en une
+          <strong class="seo">opportunité rémunérée.</strong>
+        </p>
+      </div>
+  
+      <div class="carousel-item">
+        <p>
+          <strong class="green-text">
+            <strong class="seo">Accès à des produits exclusifs :</strong>
+            <br>
+          </strong>
+          En rejoignant la
+          <strong class="seo">communauté Critikeye</strong>, vous aurez l'opportunité de découvrir des
+          <strong class="seo">produits technologiques exclusifs</strong> avant tout le monde. Vous pourrez être parmi les
+          premiers à expérimenter de
+          <strong class="seo">nouvelles fonctionnalités</strong>, des
+          <strong class="seo">innovations de pointe</strong> et des <strong class="seo">technologies émergentes</strong>.
+        </p>
+      </div>
+  
+      <div class="carousel-item">
+        <p>
+          <strong class="green-text">
+            <strong class="seo">Collaboration avec des entreprises innovantes :</strong>
+            <br>
+          </strong>
+          Critikeye vous offre la possibilité de
+          <strong class="seo">collaborer</strong> avec des <strong class="seo">entreprises innovantes</strong> dans le
+          domaine de la technologie. Votre
+          <strong class="seo">expertise</strong> et vos retours contribuent directement au développement et à
+          l'amélioration des produits.
+        </p>
+      </div>
+    </div>
 
-  <section class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center">
-    <div class="mb-8 flex items-start">
-      <h1 class="">newsletter</h1>
-      <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
+    <!-- Bouton suivant -->
+    <div>
+      <button 
+      class="carousel-next" 
+      onclick="changeSlide(1)">></button>
     </div>
-    <div class="bg-zinc-800 p-8 pl-16 pr-16 rounded-xl mt-8 md:p-16">
-      <h3 class="text-green_secondary mb-3">découvrez nos services dans un mois !</h3>
-      <p>Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures? </p>
-      <form class="form mt-6 w-full" method="post">
-        {% csrf_token %}
-        <div class="mb-4 py-2 px-4 w-full rounded-xl border border-green_secondary">
-          {{ newsletter_form.email }}
-        </div>
-        <div class="mb-[0.5rem] block min-h-[1.5rem] pl-[1.5rem]">
-          <input class="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] 
-            w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid
-             border-green_secondary outline-none before:pointer-events-none 
-             before:absolute before:h-[0.875rem] before:w-[0.875rem]
-              before:scale-0 before:rounded-full before:bg-transparent 
-              before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] 
-              before:content-[''] checked:border-primary checked:bg-primary
-               checked:before:opacity-[0.16] checked:after:absolute
-                checked:after:-mt-px checked:after:ml-[0.25rem] 
-                checked:after:block checked:after:h-[0.8125rem] 
-                checked:after:w-[0.375rem] checked:after:rotate-45
-                 checked:after:border-[0.125rem] checked:after:border-l-0
-                  checked:after:border-t-0 checked:after:border-solid
-                   checked:after:border-white checked:after:bg-transparent
-                    checked:after:content-[''] hover:cursor-pointer" type="checkbox" value="newsletter"
-            id="newsletter" />
-          <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white"
-            for="newsletter">En vous inscrivant à la newsletter, vous acceptez de recevoir des e-mails concernant le lancement de nos services.</label>
-        </div>
-        <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
-          <input class="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] 
-            w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid
-             border-green_secondary outline-none before:pointer-events-none 
-             before:absolute before:h-[0.875rem] before:w-[0.875rem]
-              before:scale-0 before:rounded-full before:bg-transparent 
-              before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] 
-              before:content-[''] checked:border-primary checked:bg-primary
-               checked:before:opacity-[0.16] checked:after:absolute
-                checked:after:-mt-px checked:after:ml-[0.25rem] 
-                checked:after:block checked:after:h-[0.8125rem] 
-                checked:after:w-[0.375rem] checked:after:rotate-45
-                 checked:after:border-[0.125rem] checked:after:border-l-0
-                  checked:after:border-t-0 checked:after:border-solid
-                   checked:after:border-white checked:after:bg-transparent
-                    checked:after:content-[''] hover:cursor-pointer" type="checkbox" value="newsletter"
-            id="newsletter" />
-          <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white"
-            for="newsletter">En vous inscrivant à notre newsletter, vous acceptez également nos mentions légales et notre politique de confidentialité.*</label>
-        </div>
-        <button type="submit"
-          class="rounded-full py-2 px-3 text-xs cursor-pointer tracking-wider border border-green_secondary   uppercase text-green_secondary mt-12 font-bold">S'abonner</button>
-      </form>
-    </div>
+  </div>
 
-  </section>
+  </div> <!-- fin NOS SERVICES -->
+</section>
+
+<script>
+  let currentSlide = 0;
+  const carouselItems = document.querySelectorAll('.carousel-item');
+
+  function changeSlide(n) {
+    carouselItems[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + n + carouselItems.length) % carouselItems.length;
+    carouselItems[currentSlide].classList.add('active');
+  }
+</script>
+
+
+  <!-- Slider -->
+  <div id="critikeye-slider-section-services">
+    <div class="slider-track">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+    </div>
+  </div>
+
+
+
+  <!-- ========== Section: VOS PROJETS CONRÉTISÉS ========== -->
+<section class="section-projects">
+   <!-- Texte-->
+   <div class="presentation-text-projects">
+    <h2>VOS PROJETS CONCRÉTISÉS</h2>
+  </div>
+
+  <!-- Bouton -->
+  <div class="et-si-container">
+    <button
+    type="button" 
+    name="Et-si" 
+    title="ET SI... ?" 
+    class="et-si-button">
+    <a href="{% url 'fiche_produit' %}">ET SI... ?</a></button>
+  </div>    
+</section>
+
+
+<!-- ========== Section: NEWSLETTER ========== -->
+
+<section
+id="section-newsletter"
+class="section-newsletter">
+
+  <div class="presentation-text">
+    <h2>NEWSLETTER</h2>
+  </div>
+
+    <!-- Card Newsletter -->
+    <div class="newsletter-card">
+      <div>
+        <h3>
+          <strong> DÉCOUVREZ NOS SERVICES DANS UN MOIS !</strong>
+        </h3>
+      </div>
+
+      <!-- Texte -->
+      <div class="newsletter-section">
+        <p>
+          Êtes-vous prêt à nous faire part de vos
+          <strong class="seo"> opinions </strong>
+          qui nous permettront d'améliorer des
+          <strong class="seo">inventions futures</strong>?
+        </p>
+      </div>
+      
+      <!-- Formulaire: Newsletter -->
+    <div>
+    <form method="post">
+      {% csrf_token %}
+      {{ newsletter_form }}
+
+      <!-- Checkboxes -->
+      <div class="checkboxes">
+        <!-- checkbox1 -->
+        <div class="checkbox1">
+          <label>
+          <input
+          class="checkbox"
+          type="checkbox"
+          name="Newsletter Emails"
+          value="Option 1">
+          En vous inscrivant à la newsletter, vous acceptez de recevoir des e-mails concernant le lancement de nos services.
+        </label>
+        </div>
+
+        <!-- checkbox2 -->
+        <div class="checkbox2">
+        <label>
+          <input
+          class="checkbox"
+          type="checkbox"
+          name="Terms"
+          value="Option 2">
+          En vous inscrivant à notre newsletter, vous acceptez également nos
+          <em> <u>mentions légales</u> </em> et notre
+          <em> <u>politique de confidentialité</u> </em>.
+          <strong style="color: var(--green);">*</strong>
+        </label>
+        </div>
+        
+      </div>
+
+      <button
+      type="submit"
+      name="newsletter" 
+      title="Envoyer" 
+      class="newsletter-button"
+      >Envoyer</button>
+    </form>
+  </div>
+
+</div> <!-- Fin Card Newsletter-->
+</section>
+
 
 
 </main>
-<!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
 
 {% endblock %}
+
+<script src="{% static 'scripts/script.js' %}"></script>
