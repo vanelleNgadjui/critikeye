@@ -5,20 +5,23 @@
 
 {% block content %}
 
-<main class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center gap-12">
+<main class="flex text-center mr-12 ml-12 mb-12  flex-col justify-center items-center gap-12  md:gap-20 ">
   <div class="flex flex-col justify-center items-center gap-12">
     <img src="{% static 'images/imgTechnophiles.svg' %}" alt="">
-    <h2> Vous êtes une entreprise ? </h2>
-    <h3> vous voulez nous  rejoindre ?</h3>
+    <h2 class="md:w-[60%]"> Vous êtes une entreprise ? </h2>
+    <h3 class="md:w-[60%]"> vous voulez nous rejoindre ?</h3>
   </div>
-  <div class="flex flex-col justify-center items-center gap-12">
-    <img src="{% static 'images/horloge.svg' %}" alt="">
-    <h3>ça vous prendra moins de 10 minutes</h3>
+  <div class="flex flex-col md:flex-row md:justify-center md:items-center gap-14">
+    <div class="flex flex-col justify-center items-center gap-12">
+      <img src="{% static 'images/horloge.svg' %}" alt="">
+      <h3 class="md:w-[60%]">le test dure moins de 10 minutes</h3>
+    </div>
+    <div class="flex flex-col justify-center items-center gap-12">
+      <img src="{% static 'images/honetete.svg' %}" alt="">
+      <h3 class="md:w-[60%]">répondez avec honnêteté</h3>
+    </div>
   </div>
-  <div class="flex flex-col justify-center items-center gap-12">
-    <img src="{% static 'images/honetete.svg' %}" alt="">
-    <h3>répondez avec honnêteté</h3>
-  </div>
+
   <div class="bg-zinc-800 p-8 rounded-xl mt-8">
     <p>Inscrivez-vous afin de découvrir votre espace personnel, ainsi que les produits à tester. </p>
     <form class="form mt-6 w-full" method="post">

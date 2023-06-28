@@ -23,10 +23,10 @@ const nextBtn = document.getElementById('carousel-next');
 let currentIndex = 0;
 
 // Sélectionnez l'élément qui contient la valeur de la variable
-const variableValueElement = document.getElementById('variable-value');
+// const variableValueElement = document.getElementById('variable-value');
 
-// Définissez votre variable
-let variable = 'Suivant';
+// // Définissez votre variable
+// let variable = 'Suivant';
 
 // Mettez à jour la valeur de la variable
 
@@ -48,7 +48,7 @@ function goToNextSlide() {
         showSlide(currentIndex);
     } else if (currentIndex === carouselItems.length - 1) {
         // Redirection vers une autre page
-        variable = 'Terminer';
+        // variable = 'Terminer';
         window.location.href = "/create_accountTechnophiles/";
     }
 }
