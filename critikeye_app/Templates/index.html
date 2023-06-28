@@ -147,7 +147,9 @@
       <!-- Texte-->
       <div class="presentation-text-how">
         <h2>COMMENT ÇA FONCTIONNE ?</h2>
-        <p id="text-presentation-how">Découvrez notre startup révolutionnaire, votre passerelle privilégiée
+        <p
+        class="text"
+        id="text-presentation-how">Découvrez notre startup révolutionnaire, votre passerelle privilégiée
           <br> entre les entreprises technologiques et les passionnés comme vous.
         </p>
       </div>
@@ -156,7 +158,7 @@
       <div class="how-card">
         <!-- Texte -->
         <div class="how-section">
-          <p>
+          <p class="text">
             Grâce à notre plateforme, vous aurez accès à un écosystème diversifié de
             <strong class="seo"> technophiles </strong>
             spécialisés dans différents domaines technologiques, tout en bénéficiant de l'opportunité exclusive de
@@ -173,8 +175,6 @@
             alt="femme et planètes">
         </div>
       </div>
-
-
     </div> <!-- fin how-->
   </section>
 
@@ -205,7 +205,7 @@
         <!-- Texte -->
         <div class="stats-container">
           <span class="stats">58%</span>
-          <p>
+          <p class="text">
             Des français estiment que la technologie peut
             <br>
             être une solution pour développer
@@ -216,7 +216,7 @@
         <!-- Texte -->
         <div class="stats-container">
           <span class="stats">70%</span>
-          <p>
+          <p class="text">
             Des internautes lisent des avis sur des
             <br>
             produits qu’ils comptent potentiellement
@@ -249,7 +249,7 @@
 
         <div class="carousel">
           <div class="carousel-item item-carousel active">
-            <p>
+            <p class="text">
               <strong class="green-text">Test en avant-première de
                 <strong class="seo">produits technologiques</strong> :
                 <br>
@@ -333,17 +333,32 @@
 
 
   <!-- ========== Section: VOS PROJETS CONRÉTISÉS ========== -->
+  
   <section class="section-projects">
-    <!-- Texte-->
-    <div class="presentation-text-projects">
-      <h2>VOS PROJETS CONCRÉTISÉS</h2>
-    </div>
-
-    <!-- Bouton -->
-    <div class="et-si-container">
-      <button type="button" name="Et-si" title="ET SI... ?" class="et-si-button">
-        <a href="{% url 'fiche_produit' %}">ET SI... ?</a></button>
-    </div>
+  
+    <div class="projects">
+      <!-- Texte-->
+      <div class="presentation-text-projects">
+        <h2>VOS PROJETS CONCRÉTISÉS</h2>
+      </div>
+  
+      <!-- Projet card -->
+      <div class="projects-card">
+        <!-- image -->
+        <!-- <div class="projetcs-section"></div> -->
+        <p
+        class="text"
+        id="text-presentation-projects">Transformez votre idée technophile en une réalité visuelle ! Cliquez ici pour
+          générer votre concept en une image captivante. comme vous.
+        </p>
+        <img src="{% static 'images/ia.webp' %}" />
+        <!-- Bouton -->
+        <div class="et-si-container">
+          <button type="button" name="Et-si" title="ET SI... ?" class="et-si-button">
+            <a href="{% url 'fiche_produit' %}">ET SI... ?</a></button>
+        </div>
+      </div>
+    </div> <!-- fin PROJETS-->
   </section>
 
 
@@ -356,7 +371,7 @@
     </div>
     <div class="bg-zinc-800 p-8  rounded-xl mt-8 md:p-16">
       <h3 class="text-green_secondary mb-3">découvrez nos services dans un mois !</h3>
-      <p>Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures? </p>
+      <p class="text">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures? </p>
       <form class="form mt-6 w-full" method="post">
         {% csrf_token %}
         <div class="mb-4 py-2 px-4 w-full rounded-xl border border-green_secondary">
@@ -379,7 +394,7 @@
                  checked:after:border-white checked:after:bg-transparent
                   checked:after:content-[''] hover:cursor-pointer" type="checkbox" value="newsletter"
             id="newsletter" />
-          <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white" for="newsletter">En vous
+          <label class="text" class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white" for="newsletter">En vous
             inscrivant à la newsletter, vous acceptez de recevoir des e-mails concernant le lancement de nos
             services.</label>
         </div>
@@ -400,7 +415,7 @@
                  checked:after:border-white checked:after:bg-transparent
                   checked:after:content-[''] hover:cursor-pointer" type="checkbox" value="newsletter"
             id="newsletter" />
-          <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white" for="newsletter">En vous
+          <label class="text" class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white" for="newsletter">En vous
             inscrivant à notre newsletter, vous acceptez également nos mentions légales et notre politique de
             confidentialité.*</label>
         </div>

@@ -1129,535 +1129,577 @@ h3 {
 
 /* ==================== VESERION DESKTOP ==================== */
 
-/* ========== Section: PRÉSENTATION ========== */
+@media only screen and (min-width : 1224px) {
+  /* ========== Section: PRÉSENTATION ========== */
 
-/* Contient le titre, le texte de présentation, le bouton (Participez) */
+  .section-services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-#presentation-block {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  line-height: auto;
-  padding: 0 3em;
-}
+  /* Contient le titre, le texte de présentation, le bouton (Participez) */
 
-/* H1 de la page */
+  #presentation-block {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: auto;
+    padding: 0 3em;
+  }
 
-#presentation-block h1 {
-  width: 100%;
-  text-align: start;
-  padding-top: 3em;
-}
+  /* H1 de la page */
 
-/* Dégradé du "CRITIKEYE" */
+  #presentation-block h1 {
+    width: 100%;
+    text-align: start;
+    padding-top: 3em;
+  }
 
-#critikeye-h1 {
-  background: linear-gradient(
+  /* Dégradé du "CRITIKEYE" */
+
+  #critikeye-h1 {
+    background: linear-gradient(
     to right,
     var(--purple),
     var(--blue),
     var(--green)
   );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: left;
-  width: 100%;
-}
-
-/* Êtes-vous prêt... (texte) */
-
-#text-section-presentation {
-  margin: 2em 0;
-  font-size: 15pt;
-  font-weight: 100;
-}
-
-/* Bouton participez */
-
-#presentation-block img {
-  width: 200px;
-  cursor: pointer;
-}
-
-/* Image (lunettes3D) */
-
-.section-presentation .lunettes3D-image {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: -5em 0 0 0;
-}
-
-.lunettes3D-image img {
-  width: 50%;
-}
-
-.image-lunettes3D {
-  display: none;
-  width: 100%;
-  background-image: url("/static/images/lunettes3D.webp");
-  background-repeat: no-repeat;
-  background-size: auto;
-  position: right;
-}
-
-/* Texte de présentation */
-
-.presentation-text {
-  display: none;
-}
-
-/* Slider */
-
-#critikeye-slider-section-presentation {
-  display: none;
-}
-
-.slider-track {
-  display: none;
-}
-
-/* Div Bouton de scroll down*/
-
-.scroll-down-button {
-  position: relative;
-  margin: 2em 0;
-}
-
-/* Bouton de scroll down (renvoie vers la newsletter) */
-
-#scroll-down-button {
-  width: 60px;
-  cursor: pointer;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-
-#scroll-down-button.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ========== Section: WATCHERS (TECHNOPHILES) & entreprises ========== */
-
-/* Section (contient les 2 cards) */
-
-.section-watchers-enterprises {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 50px;
-}
-
-/* WATCHERS */
-
-.watchers {
-  width: 100%;
-  height: 600px;
-  margin: 3em 0;
-  border-radius: 30px;
-  background-color: var(--black);
-  background-image: url("/static/images/liquid_swirl.webp");
-  background-repeat: repeat;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* ENTREPRISES */
-
-.enterprises {
-  width: 100%;
-  height: 600px;
-  margin: 3em 0;
-  border-radius: 30px;
-  background-color: var(--black);
-  background-image: url("/static/images/liquid_swirl.webp");
-  background-repeat: repeat;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* Image */
-
-.image-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.image-section a {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin: 2em 0;
-}
-
-.women-image {
-  width: 50%;
-  text-align: center;
-}
-
-.rejoins-nous-image {
-  width: 200px;
-}
-
-/* Slider */
-
-#critikeye-slider-section-watchers-enterprises {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-}
-
-.slider-track {
-  display: flex;
-  width: 200%;
-  /* Double de la largeur pour afficher les images en boucle */
-  animation: slide 12s linear infinite;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: left;
+    width: 100%;
   }
 
-  100% {
-    transform: translateX(-50%);
-    /* Décaler de 50% de la largeur du slider */
-  }
-}
+  /* Êtes-vous prêt... (texte) */
 
-#critikeye-slider-section-watchers-enterprises img {
-  width: 50%;
-  /* Utiliser une largeur de 50% pour chaque image */
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-/* ========== Section: COMMENT ÇA FONCTIONNE ========== */
-
-/* Div qui contient le titre + le texte de présentation */
-
-.how-container .presentation-text-how {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  background-image: url("/static/images/spark.webp");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin: 8em 0 3em 0;
-}
-
-/* Titre */
-
-.how-container .presentation-text-how h2 {
-  font-weight: 100;
-  font-size: 30pt;
-}
-
-/* Texte */
-
-#text-presentation-how {
-  margin: 2em 0;
-  font-weight: 100;
-  font-size: 15px;
-}
-
-.how-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.how-card {
-  width: 50%;
-  height: auto;
-  margin: 3em 0;
-  border-radius: 30px;
-  background-color: var(--black);
-  background-image: url("/static/images/liquid_swirl.webp");
-  background-repeat: repeat;
-  background-size: cover;
-  color: var(--green);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2em 1em;
-  font-weight: 100;
-  font-size: 15px;
-}
-
-#woman-planet {
-  margin: 2em 0;
-}
-
-/* Keywords SEO */
-
-.seo {
-  font-style: normal;
-  font-weight: 100;
-}
-
-/* Slider */
-
-#critikeye-slider-section-how {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-}
-
-.slider-track {
-  display: flex;
-  width: 200%;
-  /* Double de la largeur pour afficher les images en boucle */
-  animation: slide 12s linear infinite;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(0);
+  #text-section-presentation {
+    margin: 2em 0;
+    font-size: 15pt;
+    font-weight: 100;
   }
 
-  100% {
-    transform: translateX(-50%);
-    /* Décaler de 50% de la largeur du slider */
+  /* Bouton participez */
+
+  #presentation-block img {
+    width: 200px;
+    cursor: pointer;
   }
-}
 
-#critikeye-slider-section-how img {
-  width: 50%;
-  /* Utiliser une largeur de 50% pour chaque image */
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
+  /* Image (lunettes3D) */
 
-/* ========== Section: DES CHIFFRES ========== */
+  .section-presentation .lunettes3D-image {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: -5em 0 0 0;
+  }
 
-/* Conteneur du titre (DES CHIFFRES) avec l'étoile en background image */
+  .lunettes3D-image img {
+    width: 50%;
+  }
 
-.numbers .presentation-text-numbers {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  background-image: url("/static/images/spark.webp");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin: 8em 0 3em 0;
-}
+  .image-lunettes3D {
+    display: none;
+    width: 100%;
+    background-image: url("/static/images/lunettes3D.webp");
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: right;
+  }
 
-/* Titre (DES CHIFFRES)*/
+  /* Texte de présentation */
 
-.numbers .presentation-text-numbers h2 {
-  font-weight: 100;
-  font-size: 30pt;
-}
+  .presentation-text {
+    display: none;
+  }
 
-/* Conteneur de stats-container */
+  /* Slider */
 
-.french-stats {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
+  #critikeye-slider-section-presentation {
+    display: none;
+  }
 
-/* Conteneur des chiffres + textes */
+  .slider-track {
+    display: none;
+  }
 
-.stats-container {
-  width: 25%;
-  text-align: center;
-}
+  /* Div Bouton de scroll down*/
 
-/* Chiffres */
+  .scroll-down-button {
+    position: relative;
+    margin: 2em 0;
+  }
 
-.stats {
-  color: var(--green);
-  font-size: 50pt;
-}
+  /* Bouton de scroll down (renvoie vers la newsletter) */
 
-/* Chiffres */
+  #scroll-down-button {
+    width: 60px;
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
 
-.stats-container .stats p {
-  font-size: 15px;
-  font-weight: 100;
-}
+  #scroll-down-button.show {
+    opacity: 1;
+    visibility: visible;
+  }
 
-/* ========== Section: NOS SERVICES ========== */
+  /* ========== Section: WATCHERS (TECHNOPHILES) & entreprises ========== */
 
-.section-projects{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  /* Section (contient les 2 cards) */
 
-.services .presentation-text-services {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  background-image: url("/static/images/spark.webp");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin: 3em 0;
-  width: 100%;
-}
+  .section-watchers-enterprises {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+  }
 
-/* Titre (DES CHIFFRES)*/
+  /* WATCHERS */
 
-.services .presentation-text-services h2 {
-  font-weight: 100;
-  font-size: 30pt;
-}
+  .watchers {
+    width: 100%;
+    height: 600px;
+    margin: 3em 0;
+    border-radius: 30px;
+    background-color: var(--black);
+    background-image: url("/static/images/liquid_swirl.webp");
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-/* Card (nos services) */
+  /* ENTREPRISES */
 
-.carousel-container {
-  max-width: 960px;
-  margin: 20px auto;
-  background-color: var(--black);
-  margin: 3em 0;
-  border-radius: 30px;
-  background-image: url("/static/images/liquid_swirl.webp");
-  background-repeat: repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2em 1em;
-}
+  .enterprises {
+    width: 100%;
+    height: 600px;
+    margin: 3em 0;
+    border-radius: 30px;
+    background-color: var(--black);
+    background-image: url("/static/images/liquid_swirl.webp");
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
-.carousel {
-  overflow: hidden;
-  border-radius: 5px;
-  padding: 20px;
-}
+  /* Image */
 
-.carousel-item {
-  display: none;
-  text-align: center;
-  /* padding: 20px 40px; */
-}
+  .image-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
 
-.carousel-item.active {
-  display: block;
-}
+  .image-section a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 2em 0;
+  }
 
-.carousel-controls {
-  text-align: center;
-  margin-top: 20px;
-}
+  .women-image {
+    width: 50%;
+    text-align: center;
+  }
 
-.carousel-prev,
+  .rejoins-nous-image {
+    width: 200px;
+  }
+
+  /* Slider */
+
+  #critikeye-slider-section-watchers-enterprises {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider-track {
+    display: flex;
+    width: 200%;
+    /* Double de la largeur pour afficher les images en boucle */
+    animation: slide 12s linear infinite;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+      /* Décaler de 50% de la largeur du slider */
+    }
+  }
+
+  #critikeye-slider-section-watchers-enterprises img {
+    width: 50%;
+    /* Utiliser une largeur de 50% pour chaque image */
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  /* ========== Section: COMMENT ÇA FONCTIONNE ========== */
+
+  /* Div qui contient le titre + le texte de présentation */
+
+  .how-container .presentation-text-how {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-image: url("/static/images/spark.webp");
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin: 8em 0 3em 0;
+  }
+
+  /* Titre */
+
+  .how-container .presentation-text-how h2 {
+    font-weight: 100;
+    font-size: 30pt;
+  }
+
+  /* Texte */
+
+  #text-presentation-how {
+    margin: 2em 0;
+    font-weight: 100;
+    font-size: 15px;
+  }
+
+  .how-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .how-card {
+    width: 50%;
+    height: auto;
+    margin: 3em 0;
+    border-radius: 30px;
+    background-color: var(--black);
+    background-image: url("/static/images/liquid_swirl.webp");
+    background-repeat: repeat;
+    background-size: cover;
+    color: var(--green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em 1em;
+    font-weight: 100;
+    font-size: 15px;
+  }
+
+  #woman-planet {
+    margin: 2em 0;
+  }
+
+  /* Keywords SEO */
+
+  .seo {
+    font-style: normal;
+    font-weight: 100;
+  }
+
+  /* Slider */
+
+  #critikeye-slider-section-how {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider-track {
+    display: flex;
+    width: 200%;
+    /* Double de la largeur pour afficher les images en boucle */
+    animation: slide 12s linear infinite;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+      /* Décaler de 50% de la largeur du slider */
+    }
+  }
+
+  #critikeye-slider-section-how img {
+    width: 50%;
+    /* Utiliser une largeur de 50% pour chaque image */
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  /* ========== Section: DES CHIFFRES ========== */
+
+  /* Conteneur du titre (DES CHIFFRES) avec l'étoile en background image */
+
+  .numbers .presentation-text-numbers {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-image: url("/static/images/spark.webp");
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin: 8em 0 3em 0;
+  }
+
+  /* Titre (DES CHIFFRES)*/
+
+  .numbers .presentation-text-numbers h2 {
+    font-weight: 100;
+    font-size: 30pt;
+  }
+
+  /* Conteneur de stats-container */
+
+  .french-stats {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  /* Conteneur des chiffres + textes */
+
+  .stats-container {
+    width: 25%;
+    text-align: center;
+  }
+
+  /* Chiffres */
+
+  .stats {
+    color: var(--green);
+    font-size: 50pt;
+  }
+
+  /* Chiffres */
+
+  .stats-container .stats p {
+    font-size: 15px;
+    font-weight: 100;
+  }
+
+  /* ========== Section: NOS SERVICES ========== */
+
+  .section-projects{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .services .presentation-text-services {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-image: url("/static/images/spark.webp");
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin: 3em 0;
+    width: 100%;
+  }
+
+  /* Titre (DES CHIFFRES)*/
+
+  .services .presentation-text-services h2 {
+    font-weight: 100;
+    font-size: 30pt;
+  }
+
+  /* Card (nos services) */
+
+  .carousel-container {
+    max-width: 960px;
+    margin: 20px auto;
+    background-color: var(--black);
+    margin: 3em 0;
+    border-radius: 30px;
+    background-image: url("/static/images/liquid_swirl.webp");
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em 1em;
+  }
+
+  .carousel {
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .carousel-item {
+    display: none;
+    text-align: center;
+    /* padding: 20px 40px; */
+  }
+
+  .carousel-item.active {
+    display: block;
+  }
+
+  .carousel-controls {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .carousel-prev,
 .carousel-next {
-  width: 30px;
-  height: 30px;
-  color: var(--black);
-  font-size: 14px;
-  border: none;
-  background-color: var(--green);
-  margin: 0 3px;
-  border-radius: 50%;
-}
-
-/* Texte en vert */
-
-.green-text {
-  color: var(--green);
-}
-
-/* Keywords SEO */
-
-.seo {
-  font-style: normal;
-  font-weight: 100;
-}
-
-/* Slider */
-
-#critikeye-slider-section-services {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-}
-
-.slider-track {
-  display: flex;
-  width: 200%;
-  /* Double de la largeur pour afficher les images en boucle */
-  animation: slide 12s linear infinite;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(0);
+    width: 30px;
+    height: 30px;
+    color: var(--black);
+    font-size: 14px;
+    border: none;
+    background-color: var(--green);
+    margin: 0 3px;
+    border-radius: 50%;
   }
 
-  100% {
-    transform: translateX(-50%);
-    /* Décaler de 50% de la largeur du slider */
+  /* Texte en vert */
+
+  .green-text {
+    color: var(--green);
   }
-}
 
-#critikeye-slider-section-services img {
-  width: 50%;
-  /* Utiliser une largeur de 50% pour chaque image */
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
+  /* Keywords SEO */
 
-/* ========== Section: VOS PROJETS CONRÉTISÉS ========== */
+  .seo {
+    font-style: normal;
+    font-weight: 100;
+  }
 
-.section-projects .presentation-text-projects {
-  background-image: url("/static/images/spark.webp");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin: 8em 0 0 0;
-}
+  /* Slider */
 
-.section-projects .presentation-text-projects h2 {
-  font-weight: 100;
-  font-size: 30pt;
-}
+  #critikeye-slider-section-services {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
 
-.et-si-container {
-  text-align: center;
-}
+  .slider-track {
+    display: flex;
+    width: 200%;
+    /* Double de la largeur pour afficher les images en boucle */
+    animation: slide 12s linear infinite;
+  }
 
-/* Bouton */
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
 
-.et-si-button {
-  width: 100px;
-  height: 30px;
-  margin: 1em 0 2em 0;
-  border: solid 2px var(--green);
-  border-radius: 20px;
-  color: var(--green);
+    100% {
+      transform: translateX(-50%);
+      /* Décaler de 50% de la largeur du slider */
+    }
+  }
+
+  #critikeye-slider-section-services img {
+    width: 50%;
+    /* Utiliser une largeur de 50% pour chaque image */
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+  /* ========== Section: VOS PROJETS CONRÉTISÉS ========== */
+
+  .projects .presentation-text-projects {
+    background-image: url("/static/images/spark.webp");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 14px;
+    margin: 3em 0;
+  }
+
+  .section-projects .presentation-text-projects h2 {
+    font-weight: 100;
+    font-size: 30pt;
+    margin: 3em 0 1em 0;
+  }
+
+  #text-presentation-projects {
+    font-weight: 100;
+    font-size: 14px;
+    color: var(--green);
+    margin: 2em 0;
+  }
+
+  .projects-card {
+    width: 100%;
+    height: auto;
+    margin: 3em 0;
+    border-radius: 30px;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em 1em;
+  }
+
+  .projects-card
+img {
+    width: 80%;
+    text-align: center;
+    margin: 2em 0;
+  }
+
+  .et-si-container {
+    text-align: center;
+  }
+
+  /* Bouton */
+
+  .et-si-button {
+    width: 100px;
+    height: 30px;
+    margin: 1em 0 2em 0;
+    border: solid 2px var(--green);
+    border-radius: 20px;
+    color: var(--green);
+  }
+
+  .texte {
+    font-size: 14px;
+  }
 }
 
 /* ==================== TABLETTES ==================== */
@@ -2086,16 +2128,45 @@ h3 {
 
   /* ========== Section: VOS PROJETS CONCRÉTISÉS ========== */
 
-  #text-presentation {
+  .projects .presentation-text-projects {
     background-image: url("/static/images/spark.webp");
     background-repeat: no-repeat;
     background-position: right top;
     background-size: 14px;
+    margin: 3em 0;
   }
 
   .section-projects .presentation-text-projects h2 {
     font-weight: 100;
     font-size: 15pt;
+  }
+
+  #text-presentation-projects {
+    font-weight: 100;
+    font-size: 14px;
+    color: var(--green);
+    margin: 3em 0 1em 0;
+  }
+
+  .projects-card {
+    width: 100%;
+    height: auto;
+    margin: 3em 0;
+    border-radius: 30px;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em 1em;
+  }
+
+  .projects-card
+  img {
+    width: 80%;
+    text-align: center;
+    margin: 2em 0;
   }
 
   .et-si-container {
@@ -2179,6 +2250,10 @@ h3 {
     margin-right: 5px;
     background-color: transparent;
     border-color: var(--green);
+  }
+
+  .text {
+    font-size: 14px;
   }
 }
 
@@ -2490,13 +2565,6 @@ h3 {
 
   /* Conteneur de la section */
 
-  .services {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
   /* Conteneur du titre (DES CHIFFRES) avec l'étoile en background image */
 
   .services .presentation-text-services {
@@ -2524,7 +2592,7 @@ h3 {
     width: auto;
     margin: 3em 0;
     border-radius: 30px;
-    background-color: var(--white);
+    background-color: var(--black);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2614,16 +2682,45 @@ h3 {
 
   /* ========== Section: VOS PROJETS CONCRÉTISÉS ========== */
 
-  #text-presentation {
+  .projects .presentation-text-projects {
     background-image: url("/static/images/spark.webp");
     background-repeat: no-repeat;
     background-position: right top;
     background-size: 14px;
+    margin: 3em 0;
   }
 
   .section-projects .presentation-text-projects h2 {
     font-weight: 100;
     font-size: 15pt;
+  }
+
+  #text-presentation-projects {
+    font-weight: 100;
+    font-size: 14px;
+    color: var(--green);
+    margin: 3em 0 1em 0;
+  }
+
+  .projects-card {
+    width: 100%;
+    height: auto;
+    margin: 3em 0;
+    border-radius: 30px;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em 1em;
+  }
+
+  .projects-card
+  img {
+    width: 80%;
+    text-align: center;
+    margin: 2em 0;
   }
 
   .et-si-container {
@@ -2712,6 +2809,10 @@ h3 {
     margin-right: 5px;
     background-color: transparent;
     border-color: var(--green);
+  }
+
+  .text {
+    font-size: 14px;
   }
 }
 
@@ -2985,9 +3086,3 @@ h3 {
     width: 60%;
   }
 }
-
-
-
-
-
-
