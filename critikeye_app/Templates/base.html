@@ -8,12 +8,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/final.css' %}">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <title>Critikeye</title>
   <!-- Ajoutez vos liens vers les fichiers CSS et JS ici -->
 </head>
 
-<body class="text-white">
+<body class="text-white ">
+  <div class="body">
+
+ 
   <header>
     <div class="grid grid-cols-3 md:justify-between items-center">
   
@@ -109,14 +111,14 @@
 
   {% block footer %}
   <footer>
-    <div class="bg-zinc-800 p-8 flex flex-col justify-center items-center">
+    <div class="bg-zinc-800 p-8 flex flex-col justify-center items-center md:pl-0 md:pr-0 md:justify-between">
       <div class="flex flex-col justify-center items-center md:flex-row">
         <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4 md:border-none md:flex-row md:items-start">
-          <div class="flex flex-col justify-center items-center gap-2">
+          <div class="flex flex-col justify-center items-center gap-2 md:justify-start">
             <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
             <p class="text-center md:text-start md:w-[30%]">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures?</p>
           </div>
-          <ul class="flex flex-col md:flex-row justify-start items-start gap-4 md:gap-0 md:w-[30%]">
+          <ul class="flex md:flex-col flex-row justify-start items-start gap-4 md:gap-0 md:w-[30%]">
             <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base">Home</a></li>
             <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base">Watchers</a></li>
             <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base">Contact</a></li>
@@ -125,7 +127,7 @@
         <div class="flex flex-col justify-center items-center gap-2 mt-4 md:flex-row md:w-[30%]">
           <div class="flex flex-col justify-center items-center">
             <p class="text-center">Checkez nos réseaux sociaux !</p>
-            <div class="socials mt-4">
+            <div class="socials mt-4 flex flex-row gap-6">
               <a href="https://twitter.com/CritikEye" target="_blank">
                 <img src="{% static 'images/twitter.svg' %}" alt="">
               </a>
@@ -149,7 +151,7 @@
   {% endblock %}
   <!-- Ajoutez d'autres scripts et éléments communs à toutes les pages ici -->
   {% tracking_code %}
-
+</div>
   <script src="{% static 'scripts/script.js' %}"></script>
 </body>
 

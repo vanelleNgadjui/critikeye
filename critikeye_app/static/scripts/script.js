@@ -15,16 +15,10 @@ close.addEventListener('click', () => {
     menu.classList.add('hidden');
 })
 
-// Sélectionnez l'élément qui contient la valeur de la variable
-const variableValueElement = document.getElementById('variable-value');
 
-// Définissez votre variable
-let variable = 'Suivant';
+let currentSlide = 0;
+const carouselItems = document.querySelectorAll('.carousel-item');
 
-// Mettez à jour la valeur de la variable
-
-
-// Mettez à jour le contenu du bouton avec la valeur de la variable
 
 function showSlide(index) {
     carouselItems.forEach(item => {
@@ -41,7 +35,7 @@ function goToNextSlide() {
         showSlide(currentIndex);
     } else if (currentIndex === carouselItems.length - 1) {
         // Redirection vers une autre page
-        variable = 'Terminer';
+        // variable = 'Terminer';
         window.location.href = "/create_accountTechnophiles/";
     }
 }
@@ -74,12 +68,38 @@ window.addEventListener('scroll', function() {
     }
   });
 
-// Caroussel (Section NOS SERVICES)
-let currentSlide = 0;
-const carouselItems = document.querySelectorAll('.carousel-item');
 
 function changeSlide(n) {
   carouselItems[currentSlide].classList.remove('active');
   currentSlide = (currentSlide + n + carouselItems.length) % carouselItems.length;
   carouselItems[currentSlide].classList.add('active');
 }
+
+
+// Récupérer les éléments de la modal et du lien
+const modal = document.getElementById("cookie-preferences-modal");
+const link = document.getElementById("cookie-preferences-link");
+const closeBtn = modal.querySelector(".close");
+
+// Fonction pour afficher la modal
+function showModal() {
+  modal.style.display = "block";
+}
+
+// Fonction pour masquer la modal
+function hideModal() {
+  modal.style.display = "none";
+}
+
+// Gérer l'événement de clic sur le lien
+link.addEventListener("click", showModal);
+
+// Gérer l'événement de clic sur le bouton de fermeture
+closeBtn.addEventListener("click", hideModal);
+
+// Gérer l'événement de clic en dehors de la modal pour la fermer
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    hideModal();
+  }
+});

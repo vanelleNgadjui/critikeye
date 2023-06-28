@@ -9,8 +9,8 @@ import openai
 import requests
 import base64
 
-from .forms import NewsletterSubscriberForm, ProductForm, ContactForm, QuestionnaireForm, TechnophileForm, EntrepriseForm
-from .forms import ReponseForm, FinalForm
+from .forms import NewsletterSubscriberForm, ProductForm, ContactForm, QuestionnaireForm, TechnophileForm, EntrepriseForm, CookiePreferencesForm
+
 
 from .models import Product, Question, Reponse, Technophile, Entreprise
 
@@ -31,10 +31,9 @@ from email import encoders
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 
-from itertools import zip_longest
-from django.core.paginator import Paginator
-
 # Pages
+
+
 def about(request):
     return render(request, 'about.html')
 
@@ -50,23 +49,66 @@ def entreprises(request):
 def fiche_produit(request):
     return render(request, 'fiche_produit.html')
 
-# Newsletters
-
-
 def index(request):
     if request.method == 'POST':
         form = NewsletterSubscriberForm(request.POST)
         if form.is_valid():
             form.save()
+            email = form.cleaned_data['email']
+
+            # Send confirmation email
+            subject = 'Confirmation d\'inscription à notre newsletter'
+            message = f"Merci de vous être inscrit à notre newsletter avec l'adresse email : {email}."
+            from_email = 'mifuro.dc@gmail.com'
+            to_email = email
+
+            # Créer l'objet MIMEMultipart pour le mail
+            msg = MIMEMultipart()
+            msg["From"] = from_email
+            msg["To"] = to_email
+            msg["Subject"] = subject
+
+            # Ajouter le corps du message
+            msg.attach(MIMEText(message, "plain"))
+
+            # Envoyer le mail en utilisant SMTP
+            smtp_host = "smtp.gmail.com"
+            smtp_port = 587
+            smtp_username = "mifuro.dc@gmail.com"
+            smtp_password = "ruhxqzyendunbdvl"
+
+            with smtplib.SMTP(smtp_host, smtp_port) as server:
+                server.starttls()
+                server.login(smtp_username, smtp_password)
+                server.sendmail(from_email, to_email, msg.as_string())
+
             # Faites ici les actions nécessaires après l'inscription à la newsletter
-            return render(request, 'index.html')
+
+            return redirect('index')  # Redirige vers la page index après une inscription réussie
+
     else:
         form = NewsletterSubscriberForm()
 
     context = {'newsletter_form': form}
     return render(request, 'index.html', context)
 
+# Utilisez l'API du service tiers (par exemple, Mailchimp) pour ajouter l'adresse e-mail à la liste de diffusion
+            # Exemple avec Mailchimp
+            # api_key = '2e46331cd7c89002ed21ac2f0ba829bb-us21'
+            # list_id = '23e2bb484f'
+            # url = f'https://usX.api.mailchimp.com/3.0/lists/{list_id}/members'
+            # headers = {'Authorization': f'apikey {api_key}'}
+            # data = {'email_address': email, 'status': 'subscribed'}
+            # response = requests.post(url, headers=headers, json=data)
+            # if response.status_code == 200:
+            #     # L'adresse e-mail a été ajoutée avec succès à la liste de diffusion
+            #     return redirect('index')
+            # else:
+            #     # Gérez les erreurs ou les réponses de l'API
+            #     error_message = response.json().get('detail', 'Erreur lors de linscription à la newsletter.')
+            #     return render(request, 'index.html', {'error_message': error_message})
 
+            
 # Fiche produit
 @csrf_protect
 def create_product(request):
@@ -116,7 +158,8 @@ def appeler_api_dalle(prompt):
     url = "https://stablediffusionapi.com/api/v3/text2img"
 
     payload = json.dumps({
-        "key": "pLn3rhOpWRe9XaB0MYiS0BnVe3wttdbqvtcSdb1AFibpDqSmM0kdWkMpiKS4",
+        # "key": "pLn3rhOpWRe9XaB0MYiS0BnVe3wttdbqvtcSdb1AFibpDqSmM0kdWkMpiKS4",
+        "key": "Z86XZ354XtL6D7JZly0gkVw1UlPXq1Erpgfdh1q8HOFnTRKqiDIy8aymzkXJ",
         "prompt": prompt,
         "negative_prompt": None,
         "width": "512",
@@ -277,11 +320,14 @@ def user_login(request):
         # Affichez simplement la page de connexion
         return render(request, 'login.html')
 
+
 def user_logout(request):
     logout(request)
     return redirect('index')
 
 # user cennected  ?
+
+
 def my_view(request):
     if request.user.is_authenticated:
         # L'utilisateur est connecté, effectuez les actions nécessaires
@@ -291,7 +337,8 @@ def my_view(request):
         # L'utilisateur n'est pas connecté, redirigez-le vers la page de connexion
         return redirect('login')
 
-@login_required    
+
+@login_required
 def compte(request):
     # Récupérer les informations du compte
     user = request.user
@@ -311,14 +358,17 @@ def technophiles(request):
 
     if request.method == 'POST':
         if 'questionnaire_form' in request.POST:
-            questionnaire_form = QuestionnaireForm(request.POST, questions=questions)
+            questionnaire_form = QuestionnaireForm(
+                request.POST, questions=questions)
             if questionnaire_form.is_valid():
                 for question in questions:
-                    selected_reponse_id = questionnaire_form.cleaned_data.get(f'question_{question.id}')
-                    selected_reponse = question.reponse_set.get(id=selected_reponse_id)
+                    selected_reponse_id = questionnaire_form.cleaned_data.get(
+                        f'question_{question.id}')
+                    selected_reponse = question.reponse_set.get(
+                        id=selected_reponse_id)
                     selected_reponse.est_selectionnee = True
                     selected_reponse.save()
-                
+
                 reponses_correctes = Reponse.objects.filter(
                     question__in=questions,
                     est_selectionnee=True,
@@ -333,17 +383,20 @@ def technophiles(request):
                     password = technophile_form.cleaned_data.get('password1')
                     technophile.set_password(password)
                     technophile.save()
-                    user = authenticate(request, username=username, password=password)
+                    user = authenticate(
+                        request, username=username, password=password)
                     login(request, user)
-                    
+
                     # Récupérer les réponses sélectionnées par l'utilisateur
                     selected_responses = []
                     for group in grouped_questions:
                         for question in group:
-                            selected_response_id = request.POST.get(f'question{question.id}', None)
+                            selected_response_id = request.POST.get(
+                                f'question{question.id}', None)
                             if selected_response_id is not None:
-                                selected_responses.append(int(selected_response_id))
-                    
+                                selected_responses.append(
+                                    int(selected_response_id))
+
                     return redirect('compte', selected_responses=selected_responses)
 
                 context = {
@@ -359,15 +412,17 @@ def technophiles(request):
             if technophile_form.is_valid():
                 user = technophile_form.save()  # Enregistrement de l'utilisateur Technophile
                 login(request, user)  # Connexion de l'utilisateur
-                
+
                 # Récupérer les réponses sélectionnées par l'utilisateur
                 selected_responses = []
                 for group in grouped_questions:
                     for question in group:
-                        selected_response_id = request.POST.get(f'question{question.id}', None)
+                        selected_response_id = request.POST.get(
+                            f'question{question.id}', None)
                         if selected_response_id is not None:
-                            selected_responses.append(int(selected_response_id))
-                
+                            selected_responses.append(
+                                int(selected_response_id))
+
                 return redirect('compte', selected_responses=selected_responses)
             else:
                 # Gérer le cas où le formulaire n'est pas valide
@@ -384,7 +439,7 @@ def technophiles(request):
         # Affichage initial de la page avec les formulaires
         questionnaire_form = QuestionnaireForm(questions=questions)
         technophile_form = TechnophileForm()
-        
+
         context = {
             'questionnaire_form': questionnaire_form,
             'technophile_form': technophile_form,
@@ -392,6 +447,7 @@ def technophiles(request):
             'errors': technophile_form.errors
         }
     return render(request, 'technophiles.html', context)
+
 
 def creer_compte_technophile(request):
     if request.method == 'POST':
@@ -402,10 +458,12 @@ def creer_compte_technophile(request):
             email = technophile_form.cleaned_data.get('email')
 
             # Créer un nouvel utilisateur Django
-            user = User.objects.create_user(username=username, password=password, email=email)
+            user = User.objects.create_user(
+                username=username, password=password, email=email)
 
             # Créer une instance de Technophile et associer l'utilisateur
-            technophile = Technophile(user=user, email=email, username=username)
+            technophile = Technophile(
+                user=user, email=email, username=username)
             technophile.set_password(password)
             technophile.save()
 
@@ -427,6 +485,7 @@ def creer_compte_technophile(request):
         }
         return render(request, 'create_accountTechnophiles.html', context)
 
+
 @csrf_protect
 def creer_compte_entrerpise(request):
     if request.method == 'POST':
@@ -439,10 +498,12 @@ def creer_compte_entrerpise(request):
             raison_sociale = entreprise_form.cleaned_data.get('raison_sociale')
 
             # Créer un nouvel utilisateur Django
-            user = User.objects.create_user(username=username, password=password, email=email)
+            user = User.objects.create_user(
+                username=username, password=password, email=email)
 
             # Créer une instance de Entreprise et associer l'utilisateur
-            entreprise = Entreprise(user=user, email=email, username=username, numero=numero,  raison_sociale=raison_sociale)
+            entreprise = Entreprise(
+                user=user, email=email, username=username, numero=numero,  raison_sociale=raison_sociale)
             entreprise.set_password(password)
             entreprise.save()
 
@@ -469,10 +530,12 @@ def page_not_found(request, exception):
     return render(request, '404.html', status=404)
 
 
-def set_cookie(request):
-    response = HttpResponse("Cookie set!")
-    response.set_cookie('my_cookie', 'cookie_value')
-    return response    
+def set_cookie_consent(request):
+    response = HttpResponse('Consent cookie set')
+    # Définit le cookie pour une durée d'un an
+    response.set_cookie('cookie_consent', 'true', max_age=365 * 24 * 60 * 60)
+    return response
+
 
 def get_cookie(request):
     cookie_value = request.COOKIES.get('my_cookie')
@@ -480,3 +543,45 @@ def get_cookie(request):
         return HttpResponse("Cookie value: " + cookie_value)
     else:
         return HttpResponse("Cookie not found!")
+
+
+def cookie_preferences(request):
+    if request.method == 'POST':
+        form = CookiePreferencesForm(request.POST)
+        if form.is_valid():
+            # Récupérer les préférences de cookies soumises par l'utilisateur
+            cookie_consent = form.cleaned_data['cookie_consent']
+            third_party_cookies = form.cleaned_data['third_party_cookies']
+            analytics_cookies = form.cleaned_data['analytics_cookies']
+            refuse_cookies = form.cleaned_data['refuse_cookies']
+            # ...
+
+            # Stocker les préférences de cookies dans une base de données ou autre mécanisme de stockage
+            # ...
+
+            # Mettre à jour les cookies en conséquence
+            response = HttpResponse('Cookie preferences saved')
+            if refuse_cookies:
+                # Supprimer tous les cookies existants
+                response.delete_cookie('cookie_consent')
+                # Supprimer d'autres cookies si nécessaire
+                # response.delete_cookie('analytics_cookie')
+                # response.delete_cookie('third_party_cookie')
+            elif cookie_consent:
+                response.set_cookie('cookie_consent', 'true',
+                                    max_age=365 * 24 * 60 * 60)
+                # Définir d'autres cookies si nécessaire
+                # response.set_cookie('analytics_cookie', 'value', max_age=...)
+                # response.set_cookie('third_party_cookie', 'value', max_age=...)
+            else:
+                response.delete_cookie('cookie_consent')
+                # Supprimer d'autres cookies si nécessaire
+                # response.delete_cookie('analytics_cookie')
+                # response.delete_cookie('third_party_cookie')
+
+            # Rediriger l'utilisateur vers une page appropriée
+            return redirect('index')
+    else:
+        form = CookiePreferencesForm()
+
+    return render(request, 'cookie_preferences.html', {'cookies_form': form})

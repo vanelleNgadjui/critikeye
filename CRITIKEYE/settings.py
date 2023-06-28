@@ -174,3 +174,12 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 # AUTH_USER_MODEL='critikeye_app.Entreprise'
+
+# Active les cookies sécurisés
+SESSION_COOKIE_SECURE = True
+
+# Empêche l'accès aux cookies via JavaScript
+SESSION_COOKIE_HTTPONLY = True
+
+# Spécifie le comportement des cookies sur les requêtes provenant d'un autre site
+SESSION_COOKIE_SAMESITE = 'Lax'  # ou 'Strict' selon vos besoins

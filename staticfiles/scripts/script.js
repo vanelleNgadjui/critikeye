@@ -15,12 +15,20 @@ close.addEventListener('click', () => {
     menu.classList.add('hidden');
 })
 
+// Sélectionnez l'élément qui contient la valeur de la variable
+// const variableValueElement = document.getElementById('variable-value');
 
-const carousel = document.querySelector('.carousel');
-const carouselItems = carousel.querySelectorAll('.carousel-item');
-const prevBtn = document.getElementById('carousel-prev');
-const nextBtn = document.getElementById('carousel-next');
-let currentIndex = 0;
+// // Définissez votre variable
+// let variable = 'Suivant';
+
+// Mettez à jour la valeur de la variable
+
+
+// Mettez à jour le contenu du bouton avec la valeur de la variable
+// Caroussel (Section NOS SERVICES)
+let currentSlide = 0;
+const carouselItems = document.querySelectorAll('.carousel-item');
+
 
 function showSlide(index) {
     carouselItems.forEach(item => {
@@ -37,6 +45,7 @@ function goToNextSlide() {
         showSlide(currentIndex);
     } else if (currentIndex === carouselItems.length - 1) {
         // Redirection vers une autre page
+        // variable = 'Terminer';
         window.location.href = "/create_accountTechnophiles/";
     }
 }
@@ -50,9 +59,64 @@ function goToPrevSlide() {
 }
 
 
-
 prevBtn.addEventListener('click', goToPrevSlide);
 nextBtn.addEventListener('click', goToNextSlide);
+variableValueElement.textContent = variable;
+
 
 showSlide(currentIndex);
 updateButtons();
+
+
+// Bouton scroll down
+window.addEventListener('scroll', function() {
+    var scrollButton = document.querySelector('#scroll-down-button');
+    if (window.scrollY > 300) {
+      scrollButton.classList.add('show');
+    } else {
+      scrollButton.classList.remove('show');
+    }
+  });
+
+
+function changeSlide(n) {
+  carouselItems[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + n + carouselItems.length) % carouselItems.length;
+  carouselItems[currentSlide].classList.add('active');
+}
+// Récupérer les éléments de la modal et du lien
+const modal = document.getElementById("cookie-preferences-modal");
+const link = document.getElementById("cookie-preferences-link");
+const closeBtn = modal.querySelector(".close");
+
+// Fonction pour afficher la modal
+function showModal() {
+  modal.style.display = "block";
+}
+
+// Fonction pour masquer la modal
+function hideModal() {
+  modal.style.display = "none";
+}
+
+// Gérer l'événement de clic sur le lien
+link.addEventListener("click", showModal);
+
+// Gérer l'événement de clic sur le bouton de fermeture
+closeBtn.addEventListener("click", hideModal);
+
+// Gérer l'événement de clic en dehors de la modal pour la fermer
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    hideModal();
+  }
+});
+
+
+
+function changeSlide(n) {
+  carouselItems[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + n + carouselItems.length) % carouselItems.length;
+  carouselItems[currentSlide].classList.add('active');
+}
+
