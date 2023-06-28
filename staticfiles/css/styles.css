@@ -15,7 +15,30 @@ input::placeholder, textarea::placeholder {
     color:white;
 }
 
-
+/* Styles CSS pour la bannière de consentement aux cookies */
+.modal {
+    display: none; /* Masquer la bannière par défaut */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* Autres styles CSS pour le reste de la page d'accueil */
+  /* ... */
+  
 
 /* Ajoutez vos styles personnalisés ci-dessous */
 /* @import url('https://fonts.cdnfonts.com/css/akira-expanded'); */

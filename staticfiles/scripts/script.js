@@ -22,6 +22,17 @@ const prevBtn = document.getElementById('carousel-prev');
 const nextBtn = document.getElementById('carousel-next');
 let currentIndex = 0;
 
+// Sélectionnez l'élément qui contient la valeur de la variable
+const variableValueElement = document.getElementById('variable-value');
+
+// Définissez votre variable
+let variable = 'Suivant';
+
+// Mettez à jour la valeur de la variable
+
+
+// Mettez à jour le contenu du bouton avec la valeur de la variable
+
 function showSlide(index) {
     carouselItems.forEach(item => {
         item.style.display = 'none';
@@ -37,6 +48,7 @@ function goToNextSlide() {
         showSlide(currentIndex);
     } else if (currentIndex === carouselItems.length - 1) {
         // Redirection vers une autre page
+        variable = 'Terminer';
         window.location.href = "/create_accountTechnophiles/";
     }
 }
@@ -50,9 +62,39 @@ function goToPrevSlide() {
 }
 
 
-
 prevBtn.addEventListener('click', goToPrevSlide);
 nextBtn.addEventListener('click', goToNextSlide);
+variableValueElement.textContent = variable;
+
 
 showSlide(currentIndex);
 updateButtons();
+
+
+// Récupérer les éléments de la modal et du lien
+const modal = document.getElementById("cookie-preferences-modal");
+const link = document.getElementById("cookie-preferences-link");
+const closeBtn = modal.querySelector(".close");
+
+// Fonction pour afficher la modal
+function showModal() {
+  modal.style.display = "block";
+}
+
+// Fonction pour masquer la modal
+function hideModal() {
+  modal.style.display = "none";
+}
+
+// Gérer l'événement de clic sur le lien
+link.addEventListener("click", showModal);
+
+// Gérer l'événement de clic sur le bouton de fermeture
+closeBtn.addEventListener("click", hideModal);
+
+// Gérer l'événement de clic en dehors de la modal pour la fermer
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    hideModal();
+  }
+});

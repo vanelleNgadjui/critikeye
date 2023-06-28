@@ -91,7 +91,7 @@
       <h1 class="">newsletter</h1>
       <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
     </div>
-    <div class="bg-zinc-800 p-8 pl-16 pr-16 rounded-xl mt-8 md:p-16">
+    <div class="bg-zinc-800 p-8  rounded-xl mt-8 md:p-16">
       <h3 class="text-green_secondary mb-3">découvrez nos services dans un mois !</h3>
       <p>Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures? </p>
       <form class="form mt-6 w-full" method="post">
@@ -99,7 +99,7 @@
         <div class="mb-4 py-2 px-4 w-full rounded-xl border border-green_secondary">
           {{ newsletter_form.email }}
         </div>
-        <div class="mb-[0.5rem] block min-h-[1.5rem] pl-[1.5rem]">
+        <div class="mb-[0.5rem] block min-h-[1.5rem] pl-[1.5rem] lg:w-[60%]">
           <input class="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] 
             w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid
              border-green_secondary outline-none before:pointer-events-none 
@@ -119,7 +119,7 @@
           <label class="inline-block pl-[0.15rem] hover:cursor-pointer text-left text-white"
             for="newsletter">En vous inscrivant à la newsletter, vous acceptez de recevoir des e-mails concernant le lancement de nos services.</label>
         </div>
-        <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
+        <div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem] lg:w-[60%]">
           <input class="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] 
             w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid
              border-green_secondary outline-none before:pointer-events-none 
@@ -146,7 +146,30 @@
 
   </section>
 
+  <!-- Exemple de bannière d'information sur les cookies -->
+  <!-- <div id="cookie-banner" class="modal">
+    <div class="modal-content">
+      <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. Gérez vos préférences
+        <a href="{% url 'cookie_preferences' %}">ici</a>.</p>
+    </div>
+  </div> -->
 
+  <button id="cookie-preferences-link">Gérer les préférences de cookies</button>
+
+  <!-- Elément modal pour les préférences de cookies -->
+  <div id="cookie-preferences-modal" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+      <div class="modal-content bg-white p-4 rounded">
+          <span class="close absolute top-2 right-2 text-gray-500 cursor-pointer">&times;</span>
+          <h2 class="text-xl font-bold mb-4">Gérer les préférences de cookies</h2>
+          <form id="cookie-preferences-form" method="post" action="{% url 'cookie_preferences' %}">
+              {% csrf_token %}
+              {{ cookies_form.as_p }}
+              <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Enregistrer</button>
+          </form>
+      </div>
+  </div>
+  
+  
 </main>
 <!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
 

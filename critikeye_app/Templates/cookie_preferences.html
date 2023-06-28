@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- Ajoutez cette ligne pour charger les balises statiques -->
+
+{% block content %}
+<main>
+    <h1>Cookies - Préférences</h1>
+    <!-- cookie_preferences.html -->
+    <form method="post">
+        {% csrf_token %}
+        {{ cookies_form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+
+</main>
+
+<!-- Ajoutez d'autres sections et éléments en fonction de vos besoins -->
+
+{% endblock %}

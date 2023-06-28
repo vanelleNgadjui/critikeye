@@ -69,3 +69,32 @@ variableValueElement.textContent = variable;
 
 showSlide(currentIndex);
 updateButtons();
+
+
+// Récupérer les éléments de la modal et du lien
+const modal = document.getElementById("cookie-preferences-modal");
+const link = document.getElementById("cookie-preferences-link");
+const closeBtn = modal.querySelector(".close");
+
+// Fonction pour afficher la modal
+function showModal() {
+  modal.style.display = "block";
+}
+
+// Fonction pour masquer la modal
+function hideModal() {
+  modal.style.display = "none";
+}
+
+// Gérer l'événement de clic sur le lien
+link.addEventListener("click", showModal);
+
+// Gérer l'événement de clic sur le bouton de fermeture
+closeBtn.addEventListener("click", hideModal);
+
+// Gérer l'événement de clic en dehors de la modal pour la fermer
+window.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    hideModal();
+  }
+});

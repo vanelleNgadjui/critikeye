@@ -108,14 +108,14 @@
 
   {% block footer %}
   <footer>
-    <div class="bg-zinc-800 p-8 flex flex-col justify-center items-center">
+    <div class="bg-zinc-800 p-8 flex flex-col justify-center items-center md:pl-0 md:pr-0 md:justify-between">
       <div class="flex flex-col justify-center items-center md:flex-row">
         <div class="flex flex-col justify-center items-center gap-2 border-b border-gray-200 pb-4 md:border-none md:flex-row md:items-start">
-          <div class="flex flex-col justify-center items-center gap-2">
+          <div class="flex flex-col justify-center items-center gap-2 md:justify-start">
             <img class="h-8" src="{% static 'images/logo.svg' %}" alt="">
             <p class="text-center md:text-start md:w-[30%]">Êtes-vous prêt à nous faire part de vos opinions qui nous permettront d'améliorer des inventions futures?</p>
           </div>
-          <ul class="flex flex-col md:flex-row justify-start items-start gap-4 md:gap-0 md:w-[30%]">
+          <ul class="flex md:flex-col flex-row justify-start items-start gap-4 md:gap-0 md:w-[30%]">
             <li><a href="{% url 'index' %}" class="hover:text-gray-300 font-bold text-base">Home</a></li>
             <li><a href="{% url 'technophiles' %}" class="hover:text-gray-300 font-bold text-base">Watchers</a></li>
             <li><a href="{% url 'contact' %}" class="hover:text-gray-300 font-bold text-base">Contact</a></li>

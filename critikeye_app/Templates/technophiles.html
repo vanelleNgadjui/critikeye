@@ -12,7 +12,7 @@
         {% for question in group %}
         <div class="question duration-700 ease-in-ou mb-14">
           <p>{{ question.question_text }}</p>
-          <ul class="reponses text-green_secondary mt-4 inline-block">
+          <ul class="reponses text-green_secondary mt-4 inline-block text-left">
             {% for reponse in question.reponse_set.all %}
             <li class="mb-[0.125rem] flex items-center">
               <input class="mr-4 h-[1.125rem] text-left

@@ -89,12 +89,10 @@ class QuestionnaireForm(forms.Form):
             )
 
 
-class ReponseForm(forms.ModelForm):
-    class Meta:
-        model = Reponse
-        fields = ['reponse_text', 'est_correcte']
 
 
-class FinalForm(forms.Form):
-    # Ajoutez les champs requis pour le formulaire final
-    pass
+class CookiePreferencesForm(forms.Form):
+    cookie_consent = forms.BooleanField(label='Accepter les cookies', required=False)
+    third_party_cookies = forms.BooleanField(label='Cookies tiers', required=False)
+    analytics_cookies = forms.BooleanField(label='Cookies d\'analyse', required=False)
+    refuse_cookies = forms.BooleanField(label='Refuser les cookies', required=False)

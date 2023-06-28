@@ -9,8 +9,8 @@ import openai
 import requests
 import base64
 
-from .forms import NewsletterSubscriberForm, ProductForm, ContactForm, QuestionnaireForm, TechnophileForm, EntrepriseForm
-from .forms import ReponseForm, FinalForm
+from .forms import NewsletterSubscriberForm, ProductForm, ContactForm, QuestionnaireForm, TechnophileForm, EntrepriseForm, CookiePreferencesForm
+
 
 from .models import Product, Question, Reponse, Technophile, Entreprise
 
@@ -469,10 +469,10 @@ def page_not_found(request, exception):
     return render(request, '404.html', status=404)
 
 
-def set_cookie(request):
-    response = HttpResponse("Cookie set!")
-    response.set_cookie('my_cookie', 'cookie_value')
-    return response    
+def set_cookie_consent(request):
+    response = HttpResponse('Consent cookie set')
+    response.set_cookie('cookie_consent', 'true', max_age=365 * 24 * 60 * 60)  # Définit le cookie pour une durée d'un an
+    return response
 
 def get_cookie(request):
     cookie_value = request.COOKIES.get('my_cookie')
@@ -480,3 +480,43 @@ def get_cookie(request):
         return HttpResponse("Cookie value: " + cookie_value)
     else:
         return HttpResponse("Cookie not found!")
+
+def cookie_preferences(request):
+    if request.method == 'POST':
+        form = CookiePreferencesForm(request.POST)
+        if form.is_valid():
+            # Récupérer les préférences de cookies soumises par l'utilisateur
+            cookie_consent = form.cleaned_data['cookie_consent']
+            third_party_cookies = form.cleaned_data['third_party_cookies']
+            analytics_cookies = form.cleaned_data['analytics_cookies']
+            refuse_cookies = form.cleaned_data['refuse_cookies']
+            # ...
+
+            # Stocker les préférences de cookies dans une base de données ou autre mécanisme de stockage
+            # ...
+
+            # Mettre à jour les cookies en conséquence
+            response = HttpResponse('Cookie preferences saved')
+            if refuse_cookies:
+                # Supprimer tous les cookies existants
+                response.delete_cookie('cookie_consent')
+                # Supprimer d'autres cookies si nécessaire
+                # response.delete_cookie('analytics_cookie')
+                # response.delete_cookie('third_party_cookie')
+            elif cookie_consent:
+                response.set_cookie('cookie_consent', 'true', max_age=365 * 24 * 60 * 60)
+                # Définir d'autres cookies si nécessaire
+                # response.set_cookie('analytics_cookie', 'value', max_age=...)
+                # response.set_cookie('third_party_cookie', 'value', max_age=...)
+            else:
+                response.delete_cookie('cookie_consent')
+                # Supprimer d'autres cookies si nécessaire
+                # response.delete_cookie('analytics_cookie')
+                # response.delete_cookie('third_party_cookie')
+
+            # Rediriger l'utilisateur vers une page appropriée
+            return redirect('index')
+    else:
+        form = CookiePreferencesForm()
+
+    return render(request, 'cookie_preferences.html', {'cookies_form': form})

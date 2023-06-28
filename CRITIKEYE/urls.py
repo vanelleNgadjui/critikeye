@@ -49,4 +49,5 @@ urlpatterns = [
     path('create_accountTechnophiles/', views.creer_compte_technophile, name='create_accountTechnophiles'),
     path('create_accountEntreprises/', views.creer_compte_entrerpise, name='create_accountEntreprises'),
     
+    path('cookie/preferences/', views.cookie_preferences, name='cookie_preferences'),
 ]
