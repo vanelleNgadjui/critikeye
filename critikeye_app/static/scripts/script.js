@@ -15,13 +15,6 @@ close.addEventListener('click', () => {
     menu.classList.add('hidden');
 })
 
-
-const carousel = document.querySelector('.carousel');
-const carouselItems = carousel.querySelectorAll('.carousel-item');
-const prevBtn = document.getElementById('carousel-prev');
-const nextBtn = document.getElementById('carousel-next');
-let currentIndex = 0;
-
 // Sélectionnez l'élément qui contient la valeur de la variable
 const variableValueElement = document.getElementById('variable-value');
 
@@ -69,3 +62,24 @@ variableValueElement.textContent = variable;
 
 showSlide(currentIndex);
 updateButtons();
+
+
+// Bouton scroll down
+window.addEventListener('scroll', function() {
+    var scrollButton = document.querySelector('#scroll-down-button');
+    if (window.scrollY > 300) {
+      scrollButton.classList.add('show');
+    } else {
+      scrollButton.classList.remove('show');
+    }
+  });
+
+// Caroussel (Section NOS SERVICES)
+let currentSlide = 0;
+const carouselItems = document.querySelectorAll('.carousel-item');
+
+function changeSlide(n) {
+  carouselItems[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + n + carouselItems.length) % carouselItems.length;
+  carouselItems[currentSlide].classList.add('active');
+}
