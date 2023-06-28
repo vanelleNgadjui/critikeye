@@ -23,7 +23,7 @@
           nous permettront d'améliorer des inventions futures ?
         </p>
         <img src="{% static 'images/bouton-participez.webp' %}" id="bouton-participez"
-          onclick="window.location.href='https://www.youtube.com/watch?v=1PO2AVXWBhk&list=RDMxU7_yMttEs&index=13';" />
+          onclick="window.location.href='https://www.critikeye.com/technophiles';" />
         <!-- Image du bouton PARTICIPEZ!-->
       </div>
       <!-- Background image (lunettes3D) -->
@@ -54,8 +54,8 @@
 
 
   <div class="scroll-down-button">
-    <img src="{% static 'images/scroll-down-button.png' %}" id="scroll-down-button"
-      onclick="window.location.href='#section-newsletter';" />
+    <img src="{% static 'images/scroll-down-button.webp' %}" id="scroll-down-button"
+      onclick="window.location.href='#newsletter-title';" />
   </div>
 
 
@@ -130,10 +130,10 @@
   <!-- Slider -->
   <div id="critikeye-slider-section-watchers-enterprises">
     <div class="slider-track">
-      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
-      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
-      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
-      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+      <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
     </div>
   </div>
 
@@ -182,10 +182,10 @@
     <!-- Slider -->
     <div id="critikeye-slider-section-how">
       <div class="slider-track">
-        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
-        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
-        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 1">
-        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Image 2">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
+        <img src="{% static 'images/critikeyeSlider.webp' %}" alt="Critikeye brand logo">
       </div>
     </div>
   </div>
@@ -346,9 +346,12 @@
     </div>
   </section>
 
-  <section class="flex text-center mb-12 flex-col justify-center items-center">
-    <div class="mb-8 flex items-start">
-      <h1 class="">newsletter</h1>
+
+
+    <!-- ========== Section: NEWSLETTER ========== -->
+
+    <section class="flex text-center mb-12 mt-3em flex-col justify-center items-center" >    <div class="mb-8 flex items-start">
+      <h1 id="newsletter-title" class="">newsletter</h1>
       <div class="bg-star w-[1.3rem] h-[1.3rem]"></div>
     </div>
     <div class="bg-zinc-800 p-8  rounded-xl mt-8 md:p-16">
@@ -408,77 +411,7 @@
   </section>
 
 
-  <!-- ========== Section: NEWSLETTER ========== -->
 
-  <!-- <section id="section-newsletter" class="section-newsletter">
-
-    <div class="presentation-text">
-      <h2>NEWSLETTER</h2>
-    </div>
-
-    <-- Card Newsletter --
-    <div class="newsletter-card">
-      <div>
-        <h3>
-          <strong> DÉCOUVREZ NOS SERVICES DANS UN MOIS !</strong>
-        </h3>
-      </div>
-
-      <-- Texte --
-      <div class="newsletter-section">
-        <p>
-          Êtes-vous prêt à nous faire part de vos
-          <strong class="seo"> opinions </strong>
-          qui nous permettront d'améliorer des
-          <strong class="seo">inventions futures</strong>?
-        </p>
-      </div>
-
-      <-- Formulaire: Newsletter --
-      <div>
-        <form method="post">
-          {% csrf_token %}
-          {{ newsletter_form }}
-
-          <-- Checkboxes --
-          <div class="checkboxes">
-            <-- checkbox1 --
-            <div class="checkbox1">
-              <label>
-                <input class="checkbox" type="checkbox" name="Newsletter Emails" value="Option 1">
-                En vous inscrivant à la newsletter, vous acceptez de recevoir des e-mails concernant le lancement de nos
-                services.
-              </label>
-            </div>
-
-            <-- checkbox2 --
-            <div class="checkbox2">
-              <label>
-                <input class="checkbox" type="checkbox" name="Terms" value="Option 2">
-                En vous inscrivant à notre newsletter, vous acceptez également nos
-                <em> <u>mentions légales</u> </em> et notre
-                <em> <u>politique de confidentialité</u> </em>.
-                <strong style="color: var(--green);">*</strong>
-              </label>
-            </div>
-
-          </div>
-
-          <button type="submit" name="newsletter" title="Envoyer" class="newsletter-button">Envoyer</button>
-        </form>
-      </div>
-
-    </div> <-- Fin Card Newsletter--
-  </section> -->
-
-
-  <!-- Exemple de bannière d'information sur les cookies -->
-  <!-- <div id="cookie-banner" class="modal">
-    <div class="modal-content">
-      <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. Gérez vos préférences
-        <a href="{% url 'cookie_preferences' %}">ici</a>.</p>
-    </div>
-  </div> -->
   <div id="cookie-banner">
     <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
     <button id="accept-cookies">J'accepte</button>

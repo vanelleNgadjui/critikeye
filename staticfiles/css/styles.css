@@ -1358,7 +1358,17 @@ h3 {
     font-weight: 100;
   }
 
+
+
   /* ========== Section: NOS SERVICES ========== */
+
+  /* Conteneur de la section */
+  .services {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
   /* Conteneur du titre (DES CHIFFRES) avec l'étoile en background image */
   .services .presentation-text-services {
@@ -1380,11 +1390,10 @@ h3 {
   .carousel-container {
     max-width: 960px;
     margin: 20px auto;
-    background-color: var(--black);
     width: auto;
     margin: 3em 0;
     border-radius: 30px;
-    background-color: var(--black);
+    background-color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1490,6 +1499,11 @@ h3 {
   /* ========== Section: NEWSLETTER ========== */
 
   /* Newsletter */
+
+  #newsletter-title {
+    font-weight: 100;
+    font-size: 15pt;
+  }
   .newsletter-card {
     width: 100%;
     height: auto;
